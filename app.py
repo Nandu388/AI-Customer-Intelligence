@@ -1,20 +1,24 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import time
 
-# ==========================
+# ======================================================
 # PAGE CONFIG
-# ==========================
+# ======================================================
 
 st.set_page_config(
+
     page_title="AI Customer Intelligence",
-    page_icon="🤖",
+
+    page_icon="📊",
+
     layout="wide"
 )
 
-# ==========================
+# ======================================================
 # LOAD CSS
-# ==========================
+# ======================================================
 
 with open("assets/styles.css") as f:
 
@@ -23,296 +27,459 @@ with open("assets/styles.css") as f:
         unsafe_allow_html=True
     )
 
-# ==========================
+# ======================================================
 # SIDEBAR
-# ==========================
+# ======================================================
 
-st.sidebar.image(
-    "assets/logo.png",
-    width=140
-)
+with st.sidebar:
 
-st.sidebar.title(
-    "AI Customer Intelligence"
-)
+    st.image(
+        "assets/logo.png",
+        width=140
+    )
 
-st.sidebar.markdown("---")
+    st.markdown(
+        "## AI Customer Intelligence"
+    )
 
-st.sidebar.success("""
-AI-Powered Business Analytics Platform
-""")
+    st.caption(
+        "Advanced Customer Analytics Platform"
+    )
 
-st.sidebar.markdown("""
-### 📌 Platform Modules
+    st.divider()
 
-- Dashboard
-- Segmentation
-- Churn Analytics
-- Prediction
-- Recommendations
-- Insights Dashboard
-""")
+# ======================================================
+# LOADING ANIMATION
+# ======================================================
 
-st.sidebar.markdown("---")
+with st.spinner(
+    "Loading AI analytics platform..."
+):
 
-st.sidebar.info("""
-Developed using:
-- Streamlit
-- Machine Learning
-- Plotly
-- AI Analytics
-""")
+    time.sleep(1)
 
-# ==========================
+# ======================================================
 # LOAD DATA
-# ==========================
+# ======================================================
 
-data = pd.read_csv(
-    "data/customers.csv"
+@st.cache_data
+def load_data():
+
+    return pd.read_csv(
+        "data/customers.csv"
+    )
+
+df = load_data()
+# ======================================================
+# HERO SECTION
+# ======================================================
+
+hero1, hero2 = st.columns(
+    [1,7],
+    gap="small"
 )
 
-# ==========================
-# MAIN TITLE
-# ==========================
+# ======================================================
+# LOGO
+# ======================================================
 
-st.title("🤖 AI-Driven Customer Intelligence Platform")
+with hero1:
 
-st.markdown("""
-Transform customer data into business intelligence
-using Artificial Intelligence, Machine Learning,
-and Predictive Analytics.
-""")
+    st.markdown(
+        """
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+            padding-top:10px;
+        ">
+        """,
+        unsafe_allow_html=True
+    )
 
-# ==========================
+    st.image(
+        "assets/logo.png",
+        width=110
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
+# TITLE CONTENT
+# ======================================================
+
+with hero2:
+
+    st.markdown(
+        """
+        <div style="
+            padding-top:15px;
+        ">
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <h1 style="
+            margin-bottom:8px;
+            font-size:48px;
+            color:white;
+            font-weight:700;
+        ">
+
+        AI Customer Intelligence Dashboard
+
+        </h1>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <p style="
+            font-size:20px;
+            color:#38BDF8;
+            margin-top:0px;
+            margin-bottom:16px;
+            font-weight:500;
+        ">
+
+        Advanced Customer Analytics & Prediction System
+
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <p style="
+            font-size:16px;
+            color:#D1D5DB;
+            line-height:1.8;
+            max-width:950px;
+        ">
+
+        Transform customer data into actionable insights using AI-powered analytics,
+        intelligent purchase prediction, recommendation systems,
+        churn analysis, and business reporting.
+
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.divider()
+
+# ======================================================
 # KPI SECTION
-# ==========================
+# ======================================================
 
-st.subheader("📊 Business Overview")
+total_customers = len(df)
 
-col1, col2, col3, col4 = st.columns(4)
+avg_income = round(
+    df["income"].mean(),
+    2
+)
 
-with col1:
+avg_spending = round(
+    df["spending_score"].mean(),
+    2
+)
+
+retention_rate = round(
+    (1 - df["churn"].mean()) * 100,
+    1
+)
+
+k1, k2, k3, k4 = st.columns(4)
+
+with k1:
 
     st.metric(
-        "Total Customers",
-        len(data)
+        "Customers",
+        total_customers
     )
 
-with col2:
+with k2:
 
     st.metric(
-        "Revenue",
-        f"${data['income'].sum():,}"
+        "Average Income",
+        f"${avg_income}"
     )
 
-with col3:
+with k3:
 
-    retention = round(
-        (1 - data['churn'].mean()) * 100,
-        2
+    st.metric(
+        "Average Spending",
+        avg_spending
     )
+
+with k4:
 
     st.metric(
         "Retention Rate",
-        f"{retention}%"
-    )
-
-with col4:
-
-    st.metric(
-        "AI Accuracy",
-        "92%"
+        f"{retention_rate}%"
     )
 
 st.divider()
 
-# ==========================
-# GRAPH 1
-# ==========================
+# ======================================================
+# ROW 1
+# ======================================================
 
-st.subheader("🏙 Revenue by City")
+col1, col2 = st.columns([2,1])
 
-city = data.groupby(
-    "city"
-)["income"].sum().reset_index()
+# ======================================================
+# REVENUE ANALYSIS
+# ======================================================
 
-fig1 = px.bar(
-    city,
-    x="city",
-    y="income",
-    color="city",
-    title="City Revenue Analysis"
-)
+with col1:
 
-st.plotly_chart(
-    fig1,
-    use_container_width=True
-)
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Revenue Analysis"
+    )
+
+    revenue_df = df.groupby(
+        "city"
+    )["income"].sum().reset_index()
+
+    fig1 = px.bar(
+
+        revenue_df,
+
+        x="city",
+
+        y="income",
+
+        color="city"
+    )
+
+    fig1.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420,
+
+        transition_duration=1000
+    )
+
+    st.plotly_chart(
+        fig1,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
+# GENDER DISTRIBUTION
+# ======================================================
+
+with col2:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Gender Distribution"
+    )
+
+    gender = df["gender"].value_counts()
+
+    fig2 = px.pie(
+
+        values=gender.values,
+
+        names=gender.index,
+
+        hole=0.55
+    )
+
+    fig2.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420,
+
+        transition_duration=1000
+    )
+
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
 
 st.divider()
 
-# ==========================
-# GRAPH 2
-# ==========================
+# ======================================================
+# FEATURES SECTION
+# ======================================================
 
-st.subheader("📈 Customer Spending Trend")
-
-fig2 = px.line(
-    data.head(100),
-    x="customer_id",
-    y="spending_score",
-    markers=True,
-    title="Customer Spending Pattern"
+st.subheader(
+    "Platform Features"
 )
-
-st.plotly_chart(
-    fig2,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# GRAPH 3
-# ==========================
-
-st.subheader("👥 Customer Demographics")
-
-gender = data['gender'].value_counts()
-
-fig3 = px.pie(
-    values=gender.values,
-    names=gender.index,
-    title="Gender Distribution"
-)
-
-st.plotly_chart(
-    fig3,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# GRAPH 4
-# ==========================
-
-st.subheader("💰 Age vs Spending Analysis")
-
-fig4 = px.scatter(
-    data,
-    x="age",
-    y="spending_score",
-    color="gender",
-    size="income",
-    hover_data=["city"],
-    title="Customer Behavior Analysis"
-)
-
-st.plotly_chart(
-    fig4,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# GRAPH 5
-# ==========================
-
-st.subheader("⚠️ Customer Retention Analysis")
-
-churn = data['churn'].value_counts()
-
-fig5 = px.pie(
-    values=churn.values,
-    names=["Active","Churned"],
-    title="Retention Overview"
-)
-
-st.plotly_chart(
-    fig5,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# PLATFORM FEATURES
-# ==========================
-
-st.subheader("🚀 AI Platform Features")
 
 f1, f2, f3 = st.columns(3)
 
 with f1:
 
-    st.success("""
-    📊 Customer Analytics
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
 
-    Analyze customer behavior
-    using advanced visualizations.
+    st.markdown("""
+
+    ### 📈 Analytics
+
+    Analyze customer demographics,
+    spending behavior, and engagement patterns.
+
     """)
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
 
 with f2:
 
-    st.info("""
-    🧠 AI Prediction
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
 
-    Predict customer retention
-    using Machine Learning.
+    st.markdown("""
+
+    ### 🧠 AI Prediction
+
+    Predict customer purchasing behavior
+    using intelligent AI analytics.
+
     """)
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
 
 with f3:
 
-    st.warning("""
-    🎁 Recommendation Engine
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
 
-    Generate personalized
-    customer recommendations.
+    st.markdown("""
+
+    ### 🎁 Recommendations
+
+    Generate personalized product
+    recommendations using customer insights.
+
     """)
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
 
 st.divider()
 
-# ==========================
-# AI INSIGHTS
-# ==========================
+# ======================================================
+# CUSTOMER INSIGHTS
+# ======================================================
 
-st.subheader("🤖 AI Insights")
+st.subheader(
+    "AI Business Insights"
+)
 
-c1, c2, c3 = st.columns(3)
+i1, i2, i3 = st.columns(3)
 
-with c1:
+with i1:
 
-    st.success("""
-    Bangalore customers generate
-    the highest revenue.
-    """)
+    st.success(
+        "High-income customers generate stronger revenue performance."
+    )
 
-with c2:
+with i2:
 
-    st.warning("""
-    Customers with low tenure
-    show higher churn probability.
-    """)
+    st.info(
+        "Customers aged 25-35 show highest engagement patterns."
+    )
 
-with c3:
+with i3:
 
-    st.info("""
-    Customers aged 25-35 show
-    maximum spending behavior.
-    """)
+    st.warning(
+        "Low monthly visits may indicate future churn risk."
+    )
 
 st.divider()
 
-# ==========================
+# ======================================================
+# CUSTOMER TABLE
+# ======================================================
+
+st.subheader(
+    "Customer Dataset Preview"
+)
+
+st.dataframe(
+
+    df.head(20),
+
+    use_container_width=True
+)
+
+st.divider()
+
+# ======================================================
 # FOOTER
-# ==========================
+# ======================================================
 
 st.markdown("""
----
-### 💡 AI Customer Intelligence Platform
 
-Built using Streamlit, Machine Learning,
-Predictive Analytics, and AI Visualization.
-""")
+<center>
+
+### AI Customer Intelligence Platform
+
+Built with Streamlit, Machine Learning,
+and AI-driven Business Analytics.
+
+</center>
+
+""", unsafe_allow_html=True)

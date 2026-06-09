@@ -1,9 +1,22 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-# ==========================
+import io
+
+# ======================================================
+# PAGE CONFIG
+# ======================================================
+
+st.set_page_config(
+
+    page_title="Reports",
+
+    layout="wide"
+)
+
+# ======================================================
 # LOAD CSS
-# ==========================
+# ======================================================
 
 with open("assets/styles.css") as f:
 
@@ -12,67 +25,353 @@ with open("assets/styles.css") as f:
         unsafe_allow_html=True
     )
 
+# ======================================================
+# SIDEBAR
+# ======================================================
 
-st.title("📄 Business Reports")
+with st.sidebar:
 
-# Load Dataset
-data = pd.read_csv("data/customers.csv")
+    st.image(
+        "assets/logo.png",
+        width=140
+    )
 
-# KPI SECTION
-st.subheader("📌 Report Summary")
+   
 
-col1, col2, col3 = st.columns(3)
+    st.caption(
+        "Customer Analytics Platform"
+    )
 
-col1.metric(
-    "Total Customers",
-    len(data)
+    st.divider()
+
+# ======================================================
+# LOAD DATA
+# ======================================================
+
+@st.cache_data
+def load_data():
+
+    return pd.read_csv(
+        "data/customers.csv"
+    )
+
+df = load_data()
+
+# ======================================================
+# HEADER
+# ======================================================
+
+st.title(
+    "Business Reports"
 )
 
-col2.metric(
-    "Total Revenue",
-    f"${data['income'].sum():,}"
-)
-
-col3.metric(
-    "Average Spending",
-    round(data['spending_score'].mean(),2)
+st.caption(
+    "Generate downloadable reports and business summaries from customer analytics."
 )
 
 st.divider()
 
-# REVENUE BY CITY
-st.subheader("🏙 Revenue Analysis")
+# ======================================================
+# KPI SECTION
+# ======================================================
 
-city = data.groupby("city")["income"].sum().reset_index()
+total_customers = len(df)
 
-fig = px.bar(
-    city,
-    x="city",
-    y="income",
-    color="city",
-    title="Revenue by City"
+avg_income = round(
+    df["income"].mean(),
+    2
 )
 
-st.plotly_chart(fig, use_container_width=True)
+avg_spending = round(
+    df["spending_score"].mean(),
+    2
+)
 
-# CUSTOMER DATA
-st.subheader("👥 Customer Data")
+retention_rate = round(
+    (1 - df["churn"].mean()) * 100,
+    1
+)
 
-st.dataframe(data.head(100))
+k1, k2, k3, k4 = st.columns(4)
 
-# DOWNLOAD REPORT
-csv = data.to_csv(index=False)
+with k1:
+
+    st.metric(
+        "Customers",
+        total_customers
+    )
+
+with k2:
+
+    st.metric(
+        "Average Income",
+        f"${avg_income}"
+    )
+
+with k3:
+
+    st.metric(
+        "Average Spending",
+        avg_spending
+    )
+
+with k4:
+
+    st.metric(
+        "Retention Rate",
+        f"{retention_rate}%"
+    )
+
+st.divider()
+
+# ======================================================
+# ROW 1
+# ======================================================
+
+col1, col2 = st.columns(2)
+
+# ======================================================
+# CUSTOMER SUMMARY
+# ======================================================
+
+with col1:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Customer Summary"
+    )
+
+    summary = pd.DataFrame({
+
+        "Metric": [
+
+            "Total Customers",
+
+            "Average Age",
+
+            "Average Income",
+
+            "Average Spending",
+
+            "Monthly Visits",
+
+            "Retention Rate"
+        ],
+
+        "Value": [
+
+            total_customers,
+
+            round(df["age"].mean(),1),
+
+            avg_income,
+
+            avg_spending,
+
+            round(df["monthly_visits"].mean(),1),
+
+            f"{retention_rate}%"
+        ]
+    })
+
+    st.dataframe(
+
+        summary,
+
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
+# CITY REVENUE
+# ======================================================
+
+with col2:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Revenue by City"
+    )
+
+    revenue_df = df.groupby(
+        "city"
+    )["income"].sum().reset_index()
+
+    fig1 = px.bar(
+
+        revenue_df,
+
+        x="city",
+
+        y="income",
+
+        color="city"
+    )
+
+    fig1.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=400
+    )
+
+    st.plotly_chart(
+        fig1,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+st.divider()
+
+# ======================================================
+# CUSTOMER DATASET
+# ======================================================
+
+st.markdown(
+    "<div class='chart-card'>",
+    unsafe_allow_html=True
+)
+
+st.subheader(
+    "Customer Dataset"
+)
+
+st.dataframe(
+
+    df,
+
+    use_container_width=True
+)
+
+st.markdown(
+    "</div>",
+    unsafe_allow_html=True
+)
+
+st.divider()
+
+# ======================================================
+# DOWNLOAD SECTION
+# ======================================================
+
+st.subheader(
+    "Download Reports"
+)
+
+# ======================================================
+# CSV DOWNLOAD
+# ======================================================
+
+csv = df.to_csv(
+    index=False
+).encode("utf-8")
 
 st.download_button(
-    label="⬇ Download Customer Report",
+
+    label="Download Customer CSV Report",
+
     data=csv,
+
     file_name="customer_report.csv",
+
     mime="text/csv"
 )
 
-# REPORT INSIGHTS
-st.subheader("💡 Report Insights")
+# ======================================================
+# SUMMARY REPORT
+# ======================================================
 
-st.success("Bangalore customers generate highest revenue.")
-st.warning("Churn customers increased by 8%.")
-st.info("Average spending score improved this quarter.")
+report_text = f"""
+
+AI CUSTOMER INTELLIGENCE REPORT
+
+======================================
+
+Total Customers: {total_customers}
+
+Average Income: ${avg_income}
+
+Average Spending Score: {avg_spending}
+
+Retention Rate: {retention_rate}%
+
+Average Monthly Visits:
+{round(df['monthly_visits'].mean(),1)}
+
+======================================
+
+BUSINESS INSIGHTS
+
+1. High-income customers generate strong revenue.
+
+2. Customers aged 25-35 show strongest engagement.
+
+3. Frequent monthly visits improve retention.
+
+4. Low engagement customers may churn.
+
+======================================
+
+Generated by PulseIQ Analytics Platform
+"""
+
+st.download_button(
+
+    label="Download Business Summary",
+
+    data=report_text,
+
+    file_name="business_summary.txt",
+
+    mime="text/plain"
+)
+
+st.divider()
+
+# ======================================================
+# AI INSIGHTS
+# ======================================================
+
+st.subheader(
+    "AI Insights"
+)
+
+i1, i2, i3 = st.columns(3)
+
+with i1:
+
+    st.success(
+        "Revenue growth is strongest among premium customers."
+    )
+
+with i2:
+
+    st.info(
+        "Frequent visitors demonstrate stronger retention patterns."
+    )
+
+with i3:
+
+    st.warning(
+        "Low engagement users require targeted campaigns."
+    )

@@ -1,22 +1,21 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-# ==========================
+
+# ======================================================
 # PAGE CONFIG
-# ==========================
+# ======================================================
 
 st.set_page_config(
 
     page_title="Dashboard",
 
-    page_icon="📊",
-
     layout="wide"
 )
 
-# ==========================
+# ======================================================
 # LOAD CSS
-# ==========================
+# ======================================================
 
 with open("assets/styles.css") as f:
 
@@ -25,115 +24,351 @@ with open("assets/styles.css") as f:
         unsafe_allow_html=True
     )
 
-# ==========================
-# PAGE TITLE
-# ==========================
+# ======================================================
+# SIDEBAR
+# ======================================================
 
-st.title("📊 Executive Dashboard")
+with st.sidebar:
 
+    st.image(
+        "assets/logo.png",
+        width=140
+    )
+
+    st.caption(
+        "Customer Analytics Platform"
+    )
+
+    st.divider()
+
+# ======================================================
 # LOAD DATA
-data = pd.read_csv("data/customers.csv")
+# ======================================================
 
-# KPI CARDS
-col1, col2, col3, col4 = st.columns(4)
+@st.cache_data
+def load_data():
 
-col1.metric(
-    "Customers",
-    len(data)
+    return pd.read_csv(
+        "data/customers.csv"
+    )
+
+df = load_data()
+
+# ======================================================
+# HEADER
+# ======================================================
+
+st.title(
+    "AI Customer Intelligence Dashboard"
 )
 
-col2.metric(
-    "Revenue",
-    f"${data['income'].sum():,}"
-)
-
-col3.metric(
-    "Avg Spending",
-    round(data['spending_score'].mean(),2)
-)
-
-col4.metric(
-    "Retention",
-    f"{round((1-data['churn'].mean())*100,2)}%"
+st.caption(
+    "Transform customer data into intelligent business insights using AI and predictive analytics."
 )
 
 st.divider()
 
-# ==========================
-# REVENUE BY CITY
-# ==========================
+# ======================================================
+# KPI SECTION
+# ======================================================
 
-st.subheader("🏙 Revenue by City")
+k1, k2, k3, k4 = st.columns(4)
 
-city = data.groupby("city")["income"].sum().reset_index()
+with k1:
 
-fig1 = px.bar(
-    city,
-    x="city",
-    y="income",
-    color="city",
-    title="City Revenue Analysis"
-)
+    st.metric(
+        "Customers",
+        len(df)
+    )
 
-st.plotly_chart(
-    fig1,
-    use_container_width=True
-)
+with k2:
 
-# ==========================
-# SPENDING TREND
-# ==========================
+    revenue = df["income"].sum()
 
-st.subheader("📈 Customer Spending Trend")
+    st.metric(
+        "Revenue",
+        f"${round(revenue/1000,2)}K"
+    )
 
-fig2 = px.line(
-    data.head(100),
-    x="customer_id",
-    y="spending_score",
-    title="Customer Spending Pattern"
-)
+with k3:
 
-st.plotly_chart(
-    fig2,
-    use_container_width=True
-)
+    retention = round(
+        (1 - df["churn"].mean()) * 100,
+        1
+    )
 
-# ==========================
+    st.metric(
+        "Retention",
+        f"{retention}%"
+    )
+
+with k4:
+
+    st.metric(
+        "Avg Spend",
+        round(
+            df["spending_score"].mean(),
+            2
+        )
+    )
+
+st.divider()
+
+# ======================================================
+# ROW 1
+# ======================================================
+
+col1, col2 = st.columns([2,1])
+
+# ======================================================
+# REVENUE ANALYSIS
+# ======================================================
+
+with col1:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Revenue Analysis"
+    )
+
+    city_income = df.groupby(
+        "city"
+    )["income"].sum().reset_index()
+
+    fig1 = px.bar(
+
+        city_income,
+
+        x="city",
+
+        y="income",
+
+        color="city"
+    )
+
+    fig1.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420
+    )
+
+    st.plotly_chart(
+        fig1,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
 # GENDER DISTRIBUTION
-# ==========================
+# ======================================================
 
-st.subheader("👥 Gender Distribution")
+with col2:
 
-gender = data['gender'].value_counts()
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
 
-fig3 = px.pie(
-    values=gender.values,
-    names=gender.index,
-    title="Customer Demographics"
+    st.subheader(
+        "Gender Distribution"
+    )
+
+    gender = df["gender"].value_counts()
+
+    fig2 = px.pie(
+
+        values=gender.values,
+
+        names=gender.index,
+
+        hole=0.55
+    )
+
+    fig2.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420
+    )
+
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+st.divider()
+
+# ======================================================
+# ROW 2
+# ======================================================
+
+c1, c2 = st.columns(2)
+
+# ======================================================
+# INCOME VS SPENDING
+# ======================================================
+
+with c1:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Income vs Spending"
+    )
+
+    fig3 = px.scatter(
+
+        df,
+
+        x="income",
+
+        y="spending_score",
+
+        color="gender",
+
+        size="monthly_visits",
+
+        hover_data=["age", "city"]
+    )
+
+    fig3.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=450
+    )
+
+    st.plotly_chart(
+        fig3,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
+# CUSTOMER ENGAGEMENT
+# ======================================================
+
+with c2:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Customer Engagement"
+    )
+
+    visits = df.groupby(
+        "age"
+    )["monthly_visits"].mean().reset_index()
+
+    fig4 = px.line(
+
+        visits,
+
+        x="age",
+
+        y="monthly_visits",
+
+        markers=True
+    )
+
+    fig4.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=450
+    )
+
+    st.plotly_chart(
+        fig4,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+st.divider()
+
+# ======================================================
+# AI INSIGHTS
+# ======================================================
+
+st.subheader(
+    "AI Insights"
 )
 
-st.plotly_chart(
-    fig3,
-    use_container_width=True
+i1, i2, i3 = st.columns(3)
+
+with i1:
+
+    st.success(
+        "High-income customers generate maximum revenue."
+    )
+
+with i2:
+
+    st.info(
+        "Customers aged 25-35 show strongest engagement."
+    )
+
+with i3:
+
+    st.warning(
+        "Low visit customers may churn soon."
+    )
+
+st.divider()
+
+# ======================================================
+# CUSTOMER TABLE
+# ======================================================
+
+st.subheader(
+    "Customer Dataset"
 )
 
-# ==========================
-# AGE VS SPENDING
-# ==========================
-
-st.subheader("💰 Age vs Spending")
-
-fig4 = px.scatter(
-    data,
-    x="age",
-    y="spending_score",
-    color="gender",
-    size="income",
-    hover_data=["city"],
-    title="Customer Behavior Analysis"
-)
-
-st.plotly_chart(
-    fig4,
+st.dataframe(
+    df.head(20),
     use_container_width=True
 )

@@ -1,16 +1,24 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import random
 import time
+
+# ======================================================
+# PAGE CONFIG
+# ======================================================
+
 st.set_page_config(
 
     page_title="Prediction",
 
-    page_icon="🧠",
-
     layout="wide"
 )
+
+# ======================================================
+# LOAD CSS
+# ======================================================
 
 with open("assets/styles.css") as f:
 
@@ -19,74 +27,88 @@ with open("assets/styles.css") as f:
         unsafe_allow_html=True
     )
 
-st.title("🧠 AI Purchase Prediction")
+# ======================================================
+# SIDEBAR
+# ======================================================
 
-# ==========================
-# KPI CARDS
-# ==========================
+with st.sidebar:
 
-k1, k2, k3 = st.columns(3)
-
-with k1:
-
-    st.metric(
-        "Prediction Accuracy",
-        "94%"
+    st.image(
+        "assets/logo.png",
+        width=140
     )
 
-with k2:
-
-    st.metric(
-        "Customers Analyzed",
-        "500+"
+    st.caption(
+        "Customer Analytics Platform"
     )
 
-with k3:
+    st.divider()
 
-    st.metric(
-        "AI Confidence",
-        "96%"
+# ======================================================
+# LOAD DATA
+# ======================================================
+
+@st.cache_data
+def load_data():
+
+    return pd.read_csv(
+        "data/customers.csv"
     )
+
+df = load_data()
+
+# ======================================================
+# HEADER
+# ======================================================
+
+st.title(
+    "AI Purchase Prediction"
+)
+
+st.caption(
+    "Predict customer purchasing behavior using AI-driven analytics."
+)
 
 st.divider()
 
-# ==========================
-# USER INPUT
-# ==========================
+# ======================================================
+# INPUT SECTION
+# ======================================================
 
-st.subheader("📋 Customer Information")
+st.subheader(
+    "Customer Information"
+)
 
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
 
 with c1:
 
     age = st.slider(
         "Age",
         18,
-        60,
-        25
+        70,
+        30
     )
+
+with c2:
 
     gender = st.selectbox(
         "Gender",
         ["Male", "Female"]
     )
 
-    tenure = st.slider(
-        "Customer Tenure",
-        1,
-        60,
-        12
-    )
+with c3:
 
-with c2:
-
-    income = st.slider(
-        "Income",
-        20000,
-        150000,
+    income = st.number_input(
+        "Annual Income",
+        10000,
+        200000,
         50000
     )
+
+c4, c5 = st.columns(2)
+
+with c4:
 
     spending = st.slider(
         "Spending Score",
@@ -95,423 +117,349 @@ with c2:
         50
     )
 
+with c5:
+
     visits = st.slider(
         "Monthly Visits",
         1,
-        50,
+        30,
         10
     )
 
 st.divider()
 
-# ==========================
+# ======================================================
 # PREDICTION BUTTON
-# ==========================
+# ======================================================
 
-if st.button("🚀 Predict Purchases"):
-
-    # ==========================
-    # LOADING
-    # ==========================
+if st.button(
+    "Predict Customer Purchases"
+):
 
     with st.spinner(
-        "Running AI behavioral analysis..."
+        "Analyzing customer behavior..."
     ):
 
         time.sleep(2)
 
-        # ==========================
-        # PREMIUM CUSTOMERS
-        # ==========================
+        # ======================================================
+        # PURCHASE LOGIC
+        # ======================================================
 
-        if income > 100000:
+        score = (
+            income * 0.35
+            + spending * 300
+            + visits * 800
+        )
 
-            predicted_products = [
+        probability = min(
+            round(score / 100000 * 100, 1),
+            99.9
+        )
+
+        if probability > 75:
+
+            prediction = "High Purchase Probability"
+
+            products = [
 
                 "MacBook Pro",
                 "iPhone 15 Pro",
-                "Gaming Laptop",
                 "Luxury Watch",
-                "4K Smart TV",
-                "Premium Membership"
+                "Gaming Laptop"
 
             ]
 
-            category = "Premium Electronics"
+        elif probability > 50:
 
-            purchase_probability = random.randint(88,98)
+            prediction = "Moderate Purchase Probability"
 
-        # ==========================
-        # MID CUSTOMERS
-        # ==========================
-
-        elif income > 60000:
-
-            predicted_products = [
+            products = [
 
                 "Smartphone",
                 "Tablet",
                 "Shoes",
-                "Wireless Earbuds",
-                "Fitness Band",
-                "Smart Watch"
+                "Headphones"
 
             ]
 
-            category = "Mid-Level Shopping"
-
-            purchase_probability = random.randint(75,90)
-
-        # ==========================
-        # LOW CUSTOMERS
-        # ==========================
-
         else:
 
-            predicted_products = [
+            prediction = "Low Purchase Probability"
+
+            products = [
 
                 "Budget Smartphone",
-                "Discount Coupons",
-                "Affordable Fashion",
-                "Combo Deals",
-                "Wallet Cashback",
-                "Basic Accessories"
+                "Accessories",
+                "Discount Coupons"
 
             ]
 
-            category = "Budget Shopping"
+# ======================================================
+# KPI SECTION
+# ======================================================
 
-            purchase_probability = random.randint(60,80)
+        st.divider()
 
-        engagement = random.randint(65,98)
+        k1, k2, k3 = st.columns(3)
 
-        retention = random.randint(70,96)
+        with k1:
 
-# ==========================
-# RESULTS
-# ==========================
+            st.metric(
+                "Purchase Probability",
+                f"{probability}%"
+            )
 
-    st.divider()
+        with k2:
 
-    st.subheader("🧠 AI Prediction Results")
+            st.metric(
+                "Customer Segment",
+                prediction
+            )
 
-    r1, r2, r3 = st.columns(3)
+        with k3:
 
-    with r1:
+            estimated = round(
+                income * (spending / 100),
+                2
+            )
 
-        st.metric(
-            "Purchase Probability",
-            f"{purchase_probability}%"
+            st.metric(
+                "Estimated Spending",
+                f"${estimated}"
+            )
+
+# ======================================================
+# GAUGE CHART
+# ======================================================
+
+        col1, col2 = st.columns([1,1])
+
+        with col1:
+
+            st.markdown(
+                "<div class='chart-card'>",
+                unsafe_allow_html=True
+            )
+
+            st.subheader(
+                "Purchase Probability Gauge"
+            )
+
+            fig = go.Figure(
+
+                go.Indicator(
+
+                    mode="gauge+number",
+
+                    value=probability,
+
+                    gauge={
+
+                        "axis": {
+                            "range": [0,100]
+                        },
+
+                        "bar": {
+                            "color": "#2563EB"
+                        },
+
+                        "steps": [
+
+                            {
+                                "range":[0,50],
+                                "color":"#1E293B"
+                            },
+
+                            {
+                                "range":[50,75],
+                                "color":"#334155"
+                            },
+
+                            {
+                                "range":[75,100],
+                                "color":"#06B6D4"
+                            }
+                        ]
+                    }
+                )
+            )
+
+            fig.update_layout(
+
+                paper_bgcolor="#111827",
+
+                font_color="white",
+
+                height=400
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            st.markdown(
+                "</div>",
+                unsafe_allow_html=True
+            )
+
+# ======================================================
+# PRODUCT RECOMMENDATIONS
+# ======================================================
+
+        with col2:
+
+            st.markdown(
+                "<div class='chart-card'>",
+                unsafe_allow_html=True
+            )
+
+            st.subheader(
+                "Recommended Products"
+            )
+
+            rec_df = pd.DataFrame({
+
+                "Products": products,
+
+                "Interest Score": [
+
+                    random.randint(70,100)
+
+                    for _ in products
+                ]
+            })
+
+            fig2 = px.bar(
+
+                rec_df,
+
+                x="Products",
+
+                y="Interest Score",
+
+                color="Products"
+            )
+
+            fig2.update_layout(
+
+                paper_bgcolor="#111827",
+
+                plot_bgcolor="#111827",
+
+                font_color="white",
+
+                height=400
+            )
+
+            st.plotly_chart(
+                fig2,
+                use_container_width=True
+            )
+
+            st.markdown(
+                "</div>",
+                unsafe_allow_html=True
+            )
+
+# ======================================================
+# PURCHASE TREND
+# ======================================================
+
+        st.divider()
+
+        st.markdown(
+            "<div class='chart-card'>",
+            unsafe_allow_html=True
         )
 
-    with r2:
-
-        st.metric(
-            "Engagement Score",
-            f"{engagement}%"
+        st.subheader(
+            "Predicted Purchase Trend"
         )
 
-    with r3:
+        months = [
 
-        st.metric(
-            "Retention Score",
-            f"{retention}%"
-        )
-
-    st.divider()
-
-# ==========================
-# CUSTOMER ANALYSIS
-# ==========================
-
-    st.subheader("👤 Customer Analysis")
-
-    if income > 100000:
-
-        st.success("""
-        💎 Premium customer with
-        high purchasing power and
-        strong engagement.
-        """)
-
-    elif income > 60000:
-
-        st.info("""
-        🛍 Medium spending customer
-        interested in electronics,
-        fashion, and smart devices.
-        """)
-
-    else:
-
-        st.warning("""
-        💰 Budget customer likely
-        to purchase discounted
-        and affordable products.
-        """)
-
-# ==========================
-# RECOMMENDED PRODUCTS
-# ==========================
-
-    st.divider()
-
-    st.subheader("🎁 Predicted Purchases")
-
-    p1, p2 = st.columns(2)
-
-    for i, item in enumerate(predicted_products):
-
-        if i % 2 == 0:
-
-            p1.success(item)
-
-        else:
-
-            p2.info(item)
-
-# ==========================
-# GRAPH 1
-# ==========================
-
-    st.divider()
-
-    st.subheader("📊 Customer Behavior Analysis")
-
-    graph_df = pd.DataFrame({
-
-        "Metric":[
-            "Age",
-            "Income",
-            "Spending",
-            "Visits",
-            "Tenure"
-        ],
-
-        "Value":[
-            age,
-            income,
-            spending,
-            visits,
-            tenure
-        ]
-    })
-
-    fig1 = px.bar(
-
-        graph_df,
-
-        x="Metric",
-
-        y="Value",
-
-        color="Metric",
-
-        title="Customer Analytics"
-    )
-
-    fig1.update_layout(
-        height=500
-    )
-
-    st.plotly_chart(
-        fig1,
-        use_container_width=True
-    )
-
-# ==========================
-# GRAPH 2
-# ==========================
-
-    st.divider()
-
-    st.subheader("🛒 Purchase Interest Distribution")
-
-    purchase_df = pd.DataFrame({
-
-        "Category":[
-            "Electronics",
-            "Fashion",
-            "Gaming",
-            "Fitness",
-            "Accessories"
-        ],
-
-        "Purchases":[
-            random.randint(20,40),
-            random.randint(10,30),
-            random.randint(5,20),
-            random.randint(5,15),
-            random.randint(5,10)
-        ]
-    })
-
-    fig2 = px.pie(
-
-        purchase_df,
-
-        values="Purchases",
-
-        names="Category",
-
-        title="Predicted Purchase Interests"
-    )
-
-    fig2.update_layout(
-        height=500
-    )
-
-    st.plotly_chart(
-        fig2,
-        use_container_width=True
-    )
-
-# ==========================
-# GRAPH 3
-# ==========================
-
-    st.divider()
-
-    st.subheader("📈 Predicted Buying Trend")
-
-    trend_df = pd.DataFrame({
-
-        "Month":[
             "Jan",
             "Feb",
             "Mar",
             "Apr",
             "May",
             "Jun"
-        ],
-
-        "Purchases":[
-            10,
-            15,
-            20,
-            28,
-            35,
-            random.randint(40,60)
         ]
-    })
 
-    fig3 = px.line(
+        values = [
 
-        trend_df,
+            random.randint(40,100)
 
-        x="Month",
-
-        y="Purchases",
-
-        markers=True,
-
-        title="Future Buying Trend"
-    )
-
-    fig3.update_layout(
-        height=500
-    )
-
-    st.plotly_chart(
-        fig3,
-        use_container_width=True
-    )
-
-# ==========================
-# GRAPH 4
-# ==========================
-
-    st.divider()
-
-    st.subheader("📉 AI Radar Analysis")
-
-    radar_df = pd.DataFrame(dict(
-
-        r=[
-            spending,
-            engagement,
-            purchase_probability,
-            retention,
-            visits
-        ],
-
-        theta=[
-            'Spending',
-            'Engagement',
-            'Purchase',
-            'Retention',
-            'Visits'
+            for _ in months
         ]
-    ))
 
-    fig4 = px.line_polar(
+        trend_df = pd.DataFrame({
 
-        radar_df,
+            "Month": months,
 
-        r='r',
+            "Purchases": values
+        })
 
-        theta='theta',
+        fig3 = px.line(
 
-        line_close=True,
+            trend_df,
 
-        title="AI Customer Profile"
-    )
+            x="Month",
 
-    fig4.update_traces(
-        fill='toself'
-    )
+            y="Purchases",
 
-    fig4.update_layout(
-        height=550
-    )
+            markers=True
+        )
 
-    st.plotly_chart(
-        fig4,
-        use_container_width=True
-    )
+        fig3.update_layout(
 
-# ==========================
-# FINAL AI INSIGHTS
-# ==========================
+            paper_bgcolor="#111827",
 
-    st.divider()
+            plot_bgcolor="#111827",
 
-    st.subheader("🤖 AI Insights")
+            font_color="white",
 
-    st.success(f"""
-    Customers aged {age} with
-    income around ${income}
-    are highly interested in
-    {category}.
-    """)
+            height=450
+        )
 
-    st.info("""
-    AI predicts strong interest
-    in electronics and lifestyle
-    products.
-    """)
+        st.plotly_chart(
+            fig3,
+            use_container_width=True
+        )
 
-    st.warning("""
-    Personalized marketing
-    campaigns can significantly
-    increase customer purchases.
-    """)
+        st.markdown(
+            "</div>",
+            unsafe_allow_html=True
+        )
 
-# ==========================
-# DOWNLOAD REPORT
-# ==========================
+# ======================================================
+# AI INSIGHTS
+# ======================================================
 
-    st.divider()
+        st.divider()
 
-    st.download_button(
+        st.subheader(
+            "AI Insights"
+        )
 
-        label="📥 Download Prediction Report",
+        i1, i2, i3 = st.columns(3)
 
-        data=graph_df.to_csv(
-            index=False
-        ),
+        with i1:
 
-        file_name="prediction_report.csv",
+            st.success(
+                "Higher income customers show stronger buying behavior."
+            )
 
-        mime="text/csv"
-    )
+        with i2:
+
+            st.info(
+                "Customers with frequent visits are more likely to purchase."
+            )
+
+        with i3:
+
+            st.warning(
+                "Low spending score may reduce purchase probability."
+            )

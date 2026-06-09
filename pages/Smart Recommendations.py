@@ -1,14 +1,22 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import random
+
+# ======================================================
+# PAGE CONFIG
+# ======================================================
+
 st.set_page_config(
 
     page_title="Recommendations",
 
-    page_icon="🎁",
-
     layout="wide"
 )
+
+# ======================================================
+# LOAD CSS
+# ======================================================
 
 with open("assets/styles.css") as f:
 
@@ -17,187 +25,341 @@ with open("assets/styles.css") as f:
         unsafe_allow_html=True
     )
 
-st.title("🎁 Smart Recommendations")
+# ======================================================
+# SIDEBAR
+# ======================================================
 
-# ==========================
+with st.sidebar:
+
+    st.image(
+        "assets/logo.png",
+        width=140
+    )
+
+  
+
+    st.caption(
+        "Customer Analytics Platform"
+    )
+
+    st.divider()
+
+# ======================================================
 # LOAD DATA
-# ==========================
+# ======================================================
 
-data = pd.read_csv(
-    "data/customers.csv"
+@st.cache_data
+def load_data():
+
+    return pd.read_csv(
+        "data/customers.csv"
+    )
+
+df = load_data()
+
+# ======================================================
+# HEADER
+# ======================================================
+
+st.title(
+    "Smart Recommendations"
 )
 
-# ==========================
-# INCOME INPUT
-# ==========================
-
-st.subheader("💰 Enter Customer Income")
-
-income = st.number_input(
-    "Income",
-    min_value=20000,
-    max_value=150000,
-    value=50000,
-    step=5000
+st.caption(
+    "Generate AI-powered product recommendations based on customer income and behavior."
 )
 
-# ==========================
-# FIND SIMILAR CUSTOMERS
-# ==========================
+st.divider()
 
-similar_customers = data[
-    (data['income'] >= income - 10000) &
-    (data['income'] <= income + 10000)
+# ======================================================
+# INPUT SECTION
+# ======================================================
+
+st.subheader(
+    "Customer Recommendation Engine"
+)
+
+income = st.slider(
+
+    "Select Customer Income",
+
+    10000,
+
+    200000,
+
+    50000
+)
+
+st.divider()
+
+# ======================================================
+# FILTER CUSTOMERS
+# ======================================================
+
+similar_customers = df[
+
+    (df["income"] >= income - 10000)
+
+    &
+
+    (df["income"] <= income + 10000)
+
 ]
 
-st.divider()
+# ======================================================
+# KPI SECTION
+# ======================================================
 
-# ==========================
-# SHOW CUSTOMERS
-# ==========================
+k1, k2, k3 = st.columns(3)
 
-st.subheader("👥 Similar Customers")
+with k1:
 
-st.dataframe(
-    similar_customers[
-        [
-            'name',
-            'age',
-            'gender',
-            'city',
-            'income',
-            'favorite_product',
-            'favorite_category'
-        ]
-    ].head(20),
-    use_container_width=True
-)
+    st.metric(
+        "Similar Customers",
+        len(similar_customers)
+    )
 
-st.divider()
+with k2:
 
-# ==========================
-# MOST COMMON PRODUCTS
-# ==========================
+    avg_spending = round(
 
-st.subheader("🛒 Frequently Purchased Products")
+        similar_customers[
+            "spending_score"
+        ].mean(),
 
-top_products = similar_customers[
-    'favorite_product'
-].value_counts().reset_index()
+        2
+    )
 
-top_products.columns = [
-    'Product',
-    'Count'
-]
-
-fig1 = px.bar(
-    top_products,
-    x='Product',
-    y='Count',
-    color='Product',
-    title='Most Frequently Purchased Products'
-)
-
-st.plotly_chart(
-    fig1,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# CATEGORY ANALYSIS
-# ==========================
-
-st.subheader("📦 Favorite Categories")
-
-top_categories = similar_customers[
-    'favorite_category'
-].value_counts().reset_index()
-
-top_categories.columns = [
-    'Category',
-    'Count'
-]
-
-fig2 = px.pie(
-    top_categories,
-    values='Count',
-    names='Category',
-    title='Customer Interest Categories'
-)
-
-st.plotly_chart(
-    fig2,
-    use_container_width=True
-)
-
-st.divider()
-
-# ==========================
-# AI RECOMMENDATIONS
-# ==========================
-
-st.subheader("🎁 Recommended Products")
-
-recommendations = top_products[
-    'Product'
-].head(5).tolist()
-
-c1, c2 = st.columns(2)
-
-for i, item in enumerate(recommendations):
-
-    if i % 2 == 0:
-
-        c1.success(item)
-
-    else:
-
-        c2.info(item)
-
-st.divider()
-
-# ==========================
-# CUSTOMER ENGAGEMENT GRAPH
-# ==========================
-
-st.subheader("📈 Customer Engagement Analysis")
-
-graph_df = pd.DataFrame({
-
-    "Metric":[
+    st.metric(
         "Average Spending",
-        "Average Visits",
-        "Average Tenure",
-        "Average Purchase Frequency"
-    ],
+        avg_spending
+    )
 
-    "Value":[
+with k3:
+
+    avg_visits = round(
+
         similar_customers[
-            'spending_score'
+            "monthly_visits"
         ].mean(),
 
-        similar_customers[
-            'monthly_visits'
-        ].mean(),
+        2
+    )
 
-        similar_customers[
-            'tenure'
-        ].mean(),
+    st.metric(
+        "Monthly Visits",
+        avg_visits
+    )
 
-        similar_customers[
-            'purchase_frequency'
-        ].mean()
+st.divider()
+
+# ======================================================
+# PRODUCT LOGIC
+# ======================================================
+
+if income > 100000:
+
+    products = [
+
+        "MacBook Pro",
+        "iPhone 15 Pro",
+        "Gaming Laptop",
+        "Luxury Watch",
+        "Smart Home Devices"
     ]
-})
 
-fig3 = px.bar(
-    graph_df,
-    x='Metric',
-    y='Value',
-    color='Metric',
-    title='Customer Behavior Analysis'
+elif income > 60000:
+
+    products = [
+
+        "Smartphone",
+        "Tablet",
+        "Headphones",
+        "Sneakers",
+        "Smart Watch"
+    ]
+
+else:
+
+    products = [
+
+        "Budget Smartphone",
+        "Accessories",
+        "Discount Coupons",
+        "Backpacks",
+        "Basic Electronics"
+    ]
+
+# ======================================================
+# ROW 1
+# ======================================================
+
+col1, col2 = st.columns([1,1])
+
+# ======================================================
+# PRODUCT RECOMMENDATIONS
+# ======================================================
+
+with col1:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Recommended Products"
+    )
+
+    product_df = pd.DataFrame({
+
+        "Products": products,
+
+        "Recommendation Score": [
+
+            random.randint(70,100)
+
+            for _ in products
+        ]
+    })
+
+    fig1 = px.bar(
+
+        product_df,
+
+        x="Products",
+
+        y="Recommendation Score",
+
+        color="Products"
+    )
+
+    fig1.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420
+    )
+
+    st.plotly_chart(
+        fig1,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+# ======================================================
+# PURCHASE CATEGORY
+# ======================================================
+
+with col2:
+
+    st.markdown(
+        "<div class='chart-card'>",
+        unsafe_allow_html=True
+    )
+
+    st.subheader(
+        "Purchase Category Analysis"
+    )
+
+    categories = pd.DataFrame({
+
+        "Category": [
+
+            "Electronics",
+            "Fashion",
+            "Accessories",
+            "Home",
+            "Sports"
+        ],
+
+        "Score": [
+
+            random.randint(50,100)
+
+            for _ in range(5)
+        ]
+    })
+
+    fig2 = px.pie(
+
+        categories,
+
+        values="Score",
+
+        names="Category",
+
+        hole=0.5
+    )
+
+    fig2.update_layout(
+
+        paper_bgcolor="#111827",
+
+        plot_bgcolor="#111827",
+
+        font_color="white",
+
+        height=420
+    )
+
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+st.divider()
+
+# ======================================================
+# CUSTOMER ANALYSIS
+# ======================================================
+
+st.markdown(
+    "<div class='chart-card'>",
+    unsafe_allow_html=True
+)
+
+st.subheader(
+    "Customer Spending Analysis"
+)
+
+fig3 = px.scatter(
+
+    similar_customers,
+
+    x="income",
+
+    y="spending_score",
+
+    color="gender",
+
+    size="monthly_visits",
+
+    hover_data=["age","city"]
+)
+
+fig3.update_layout(
+
+    paper_bgcolor="#111827",
+
+    plot_bgcolor="#111827",
+
+    font_color="white",
+
+    height=500
 )
 
 st.plotly_chart(
@@ -205,59 +367,73 @@ st.plotly_chart(
     use_container_width=True
 )
 
-st.divider()
-
-# ==========================
-# INCOME DISTRIBUTION
-# ==========================
-
-st.subheader("💰 Similar Customer Income Distribution")
-
-fig4 = px.histogram(
-    similar_customers,
-    x='income',
-    nbins=20,
-    color='gender',
-    title='Income Distribution'
+st.markdown(
+    "</div>",
+    unsafe_allow_html=True
 )
 
-st.plotly_chart(
-    fig4,
+st.divider()
+
+# ======================================================
+# RECOMMENDED PRODUCTS TABLE
+# ======================================================
+
+st.subheader(
+    "Recommended Product List"
+)
+
+recommend_df = pd.DataFrame({
+
+    "Product": products,
+
+    "Expected Interest": [
+
+        random.randint(70,100)
+
+        for _ in products
+    ],
+
+    "Purchase Probability": [
+
+        random.randint(60,99)
+
+        for _ in products
+    ]
+})
+
+st.dataframe(
+
+    recommend_df,
+
     use_container_width=True
 )
 
 st.divider()
 
-# ==========================
+# ======================================================
 # AI INSIGHTS
-# ==========================
+# ======================================================
 
-st.subheader("🤖 AI Insights")
+st.subheader(
+    "AI Insights"
+)
 
-if len(similar_customers) > 0:
+i1, i2, i3 = st.columns(3)
 
-    top_product = top_products.iloc[0]['Product']
+with i1:
 
-    top_category = top_categories.iloc[0]['Category']
+    st.success(
+        "High-income customers prefer premium electronic products."
+    )
 
-    st.success(f"""
-    Customers with income around ${income}
-    frequently purchase {top_product}.
-    """)
+with i2:
 
-    st.info(f"""
-    Most popular category:
-    {top_category}
-    """)
+    st.info(
+        "Frequent visitors show stronger recommendation engagement."
+    )
 
-    st.warning("""
-    AI recommends personalized marketing
-    campaigns based on customer income
-    and purchasing behavior.
-    """)
+with i3:
 
-else:
-
-    st.error("""
-    No customers found for this income range.
-    """)
+    st.warning(
+        "Lower spending customers respond better to discounts."
+    )
