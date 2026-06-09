@@ -1,0 +1,501 @@
+customer_id,name,age,gender,city,income,spending_score,tenure,monthly_visits,favorite_product,favorite_category,purchase_frequency,churn
+1,Christopher Glenn,33,Male,Chennai,141373,96,41,4,Laptop,Electronics,5,0
+2,Thomas Melendez,59,Female,Hyderabad,26669,33,55,5,Smart TV,Gaming,2,0
+3,Tammy Barnes,19,Female,Bangalore,129357,67,53,1,Laptop,Gaming,13,0
+4,Brett Hunter,30,Male,Pune,34741,50,27,10,Smart TV,Electronics,19,0
+5,Joseph Morgan,56,Female,Chennai,93474,67,40,29,Shoes,Accessories,15,0
+6,Douglas Brown,36,Male,Delhi,104418,9,2,15,Fitness Band,Fashion,16,1
+7,Thomas Hahn,54,Female,Pune,30227,76,41,3,Shoes,Gaming,6,0
+8,Stephen Gutierrez,27,Female,Chennai,93763,24,32,6,Camera,Gaming,8,0
+9,Charles Mclaughlin,49,Male,Mumbai,58058,89,9,4,Fitness Band,Gaming,2,0
+10,Heather Baker,58,Male,Bangalore,89640,92,27,29,Tablet,Electronics,17,0
+11,Russell Dean,49,Female,Delhi,23282,95,16,29,Laptop,Gaming,2,0
+12,Kaitlin Howell,49,Male,Mumbai,80969,11,30,10,Camera,Fitness,20,0
+13,Karen Lewis,54,Male,Chennai,79904,75,7,26,Tablet,Fashion,10,0
+14,Mark Johnson,23,Female,Delhi,30295,93,48,21,Laptop,Fitness,19,0
+15,Robert Guzman,40,Male,Bangalore,25054,35,27,1,Camera,Accessories,5,0
+16,Harold Mullen,38,Male,Chennai,58815,85,52,28,Tablet,Accessories,13,0
+17,Brian Li,55,Male,Chennai,123888,84,15,7,Camera,Gaming,4,0
+18,Jason Brown,51,Female,Delhi,78453,46,43,19,Shoes,Gaming,10,0
+19,Mary Baker,23,Male,Delhi,145574,27,28,16,Camera,Fashion,12,0
+20,Amanda Wilcox,19,Female,Pune,29130,48,10,7,Shoes,Electronics,4,0
+21,Mary Martin,56,Male,Hyderabad,109434,24,19,1,Camera,Accessories,12,0
+22,Joseph Barajas,19,Male,Chennai,96443,22,16,17,Laptop,Fitness,2,0
+23,Mrs. Nancy Schroeder,38,Female,Delhi,64198,72,48,9,Laptop,Electronics,4,0
+24,Jacob Alvarado,26,Male,Hyderabad,142932,73,56,8,Shoes,Fashion,14,0
+25,Jeff Shannon,27,Female,Pune,55918,98,6,13,Smart TV,Electronics,20,0
+26,Nancy Hansen,50,Male,Chennai,123496,7,18,17,Gaming Console,Gaming,2,0
+27,Scott Parker,53,Female,Delhi,42035,86,38,15,Headphones,Fashion,16,0
+28,Michael Austin,56,Male,Mumbai,102044,64,50,24,Camera,Fashion,10,0
+29,Jennifer Haynes,44,Female,Bangalore,90500,81,53,19,Watch,Fitness,7,0
+30,Emily Parker,60,Male,Hyderabad,141527,36,48,25,iPhone,Accessories,16,0
+31,Todd Brown,39,Female,Mumbai,63821,17,13,7,Watch,Fitness,2,0
+32,Nicole Foster,46,Female,Mumbai,100735,80,33,30,Gaming Console,Electronics,7,0
+33,Melissa Diaz,27,Male,Delhi,46215,82,58,28,Fitness Band,Accessories,10,0
+34,Rebecca King,28,Female,Chennai,66037,18,22,9,Watch,Gaming,19,0
+35,Kristen Villegas,19,Female,Mumbai,44935,38,49,30,Laptop,Electronics,5,0
+36,Matthew Cantrell,56,Female,Mumbai,129347,16,31,24,Camera,Fitness,3,0
+37,Duane Howe,23,Male,Bangalore,48035,15,43,17,Headphones,Accessories,11,0
+38,Benjamin Brown,56,Male,Mumbai,145469,97,28,8,Laptop,Fashion,13,0
+39,Alan Williams,52,Female,Hyderabad,97175,23,3,27,Headphones,Fashion,11,1
+40,Michael Waters,49,Male,Delhi,135997,31,7,27,Headphones,Gaming,7,1
+41,Scott Bailey,33,Male,Delhi,33784,70,15,30,Fitness Band,Electronics,7,0
+42,Yolanda Hughes,42,Female,Delhi,55824,98,4,30,Headphones,Accessories,11,0
+43,Kristine Gibbs,50,Female,Delhi,27572,24,5,17,Camera,Electronics,11,1
+44,James Payne,29,Female,Bangalore,68543,28,49,11,Watch,Accessories,18,0
+45,Brian Rodriguez,46,Male,Hyderabad,75371,28,49,11,Fitness Band,Fitness,8,0
+46,Danny Frank,41,Male,Mumbai,112428,95,52,17,Gaming Console,Gaming,10,0
+47,Joseph Smith,58,Female,Mumbai,86193,49,38,23,Tablet,Electronics,20,0
+48,Matthew Hernandez,41,Female,Chennai,117090,6,52,7,Tablet,Fitness,18,0
+49,Sean Kennedy,54,Female,Bangalore,41277,75,50,6,Smart TV,Fashion,11,0
+50,Elaine Lee,51,Male,Chennai,99609,29,38,17,Smart TV,Fashion,2,0
+51,Melissa Walters,21,Female,Delhi,124098,96,11,14,Laptop,Gaming,15,0
+52,Angela Alexander,26,Male,Hyderabad,50463,86,59,19,Shoes,Fitness,10,0
+53,Katherine Calhoun,42,Female,Hyderabad,102744,17,36,30,Shoes,Accessories,19,0
+54,Misty Hayes,52,Female,Hyderabad,105728,22,46,24,Camera,Accessories,5,0
+55,Brian Miller,39,Female,Mumbai,87861,77,13,20,Watch,Accessories,13,0
+56,Courtney Foley,51,Male,Delhi,40732,100,29,15,Shoes,Gaming,5,0
+57,Keith Nielsen,48,Female,Hyderabad,27874,57,52,2,Tablet,Accessories,9,0
+58,Joseph Stevens,20,Female,Chennai,119556,79,51,12,Shoes,Fashion,7,0
+59,Jordan Lopez,41,Male,Chennai,91728,27,45,16,Laptop,Fitness,9,0
+60,Amanda Davenport,50,Male,Delhi,41608,35,24,5,Gaming Console,Gaming,20,0
+61,Richard Kim,36,Female,Delhi,45410,66,10,24,Gaming Console,Electronics,19,0
+62,Theresa Rivas,57,Female,Delhi,92173,28,4,20,Fitness Band,Fitness,11,1
+63,Whitney Smith,37,Male,Chennai,118432,25,40,10,iPhone,Accessories,16,0
+64,Jordan Cervantes,45,Male,Delhi,67009,98,41,5,Camera,Fitness,18,0
+65,Brooke Stone,56,Female,Pune,118160,17,40,18,Gaming Console,Accessories,19,0
+66,Nathan Ward,60,Male,Bangalore,79814,76,22,12,Watch,Electronics,5,0
+67,Debra Rojas,38,Male,Pune,69281,28,29,25,Watch,Gaming,2,0
+68,Suzanne Watkins,36,Male,Bangalore,124352,12,6,15,Smart TV,Gaming,19,1
+69,Jane Smith,21,Female,Mumbai,70859,76,27,23,Headphones,Accessories,17,0
+70,Charlene Lane,49,Male,Pune,49963,49,15,3,Laptop,Fitness,12,0
+71,Christina Hines,57,Male,Mumbai,71401,72,25,24,Tablet,Fashion,4,0
+72,Jason Chung,50,Male,Bangalore,70904,67,40,25,Camera,Fitness,16,0
+73,Stephanie Jackson,60,Male,Mumbai,100588,56,24,25,Camera,Fitness,4,0
+74,William Smith,58,Female,Bangalore,102361,36,39,21,Fitness Band,Gaming,2,0
+75,Daniel Reyes,60,Male,Chennai,143022,98,7,16,Gaming Console,Electronics,17,0
+76,Alexandra Peterson,51,Female,Hyderabad,131127,64,55,8,Camera,Gaming,16,0
+77,Mikayla Carter,33,Female,Delhi,42763,24,45,30,Gaming Console,Fitness,12,0
+78,Roberto Hawkins,21,Female,Bangalore,68691,24,54,17,Shoes,Gaming,9,0
+79,Frank Sandoval,59,Male,Chennai,107496,53,44,27,Gaming Console,Fashion,20,0
+80,Gregory Huber,46,Male,Chennai,134216,24,29,5,Laptop,Fitness,20,0
+81,Dakota James,55,Male,Bangalore,29127,53,57,20,Camera,Gaming,18,0
+82,Linda Jacobs,40,Male,Chennai,93617,68,12,23,Headphones,Fitness,14,0
+83,Danielle Garcia,40,Male,Pune,112314,19,60,24,Camera,Fitness,9,0
+84,Jacqueline White,57,Female,Mumbai,137851,98,35,12,Camera,Gaming,11,0
+85,Julie Schultz,25,Female,Delhi,38292,89,40,2,Headphones,Fashion,6,0
+86,Jessica Khan,55,Male,Delhi,137212,25,24,9,Smart TV,Gaming,5,0
+87,Nicholas Wong,39,Female,Pune,42992,81,58,30,iPhone,Fitness,10,0
+88,Melanie Santiago,54,Female,Delhi,24976,56,35,5,Smart TV,Fashion,20,0
+89,Michael Roach,23,Female,Mumbai,103715,30,39,25,Headphones,Fitness,13,0
+90,Gregory Johnson,55,Female,Chennai,136096,12,37,9,Gaming Console,Gaming,8,0
+91,Michael Phillips,21,Female,Mumbai,25927,89,37,9,Tablet,Gaming,11,0
+92,Tyler Hall,54,Female,Pune,103375,47,14,9,Shoes,Fitness,11,0
+93,Jessica Tran,43,Female,Bangalore,30870,78,37,12,Smart TV,Fashion,11,0
+94,Kelly Lewis,45,Female,Mumbai,98917,58,28,15,Watch,Fashion,17,0
+95,Nicholas Gregory,34,Male,Chennai,83960,79,16,25,Gaming Console,Electronics,15,0
+96,Chelsea Evans,37,Male,Hyderabad,40147,44,55,4,Shoes,Accessories,17,0
+97,Brian Harmon,48,Female,Hyderabad,35732,46,58,20,Fitness Band,Gaming,2,0
+98,Catherine Oneill,20,Female,Delhi,134652,77,9,20,Headphones,Gaming,8,0
+99,Katelyn Romero,47,Female,Bangalore,43244,15,48,7,Gaming Console,Electronics,6,0
+100,Jimmy Reed,52,Female,Mumbai,61555,70,10,14,Camera,Electronics,20,0
+101,Theresa Smith,51,Male,Mumbai,103283,28,60,12,Headphones,Electronics,13,0
+102,Joyce Booth,44,Male,Chennai,120578,82,5,29,Shoes,Fashion,8,0
+103,Rebecca Stokes,52,Male,Hyderabad,114153,100,55,7,Smart TV,Gaming,18,0
+104,Frances Brooks,50,Female,Mumbai,137237,50,58,23,Laptop,Accessories,1,0
+105,Andrew Perez,26,Female,Pune,119907,86,26,29,Smart TV,Fitness,9,0
+106,Virginia Young,39,Male,Chennai,147542,1,4,5,Gaming Console,Electronics,7,1
+107,Megan Ramos,27,Male,Chennai,112349,18,30,16,Camera,Electronics,12,0
+108,John Gallagher,51,Male,Mumbai,134590,75,21,15,iPhone,Fashion,1,0
+109,Benjamin Dominguez,52,Male,Delhi,90442,82,44,3,Tablet,Fitness,12,0
+110,Fernando Ali,46,Female,Pune,76746,71,38,10,Tablet,Fitness,11,0
+111,Lisa Fowler,57,Female,Delhi,38223,17,1,21,Laptop,Gaming,17,1
+112,Christina Tucker,54,Female,Delhi,108612,80,49,30,Watch,Accessories,7,0
+113,Terri Schultz,29,Female,Chennai,37508,10,46,23,Laptop,Fitness,5,0
+114,Dr. Michelle Whitehead DVM,48,Female,Chennai,41735,67,8,17,Watch,Gaming,3,0
+115,Victoria King,42,Male,Pune,140867,28,44,3,Headphones,Accessories,9,0
+116,Shaun Owens,37,Female,Mumbai,53858,97,44,6,Gaming Console,Electronics,17,0
+117,Margaret Hurley,26,Male,Mumbai,122419,41,55,5,Watch,Accessories,18,0
+118,Lance Vaughn,39,Female,Delhi,129751,32,10,20,Smart TV,Electronics,1,1
+119,Charles Livingston,25,Male,Hyderabad,66773,99,8,4,Camera,Fashion,8,0
+120,Jason Williams,39,Male,Pune,31740,99,30,5,Watch,Electronics,13,0
+121,Robin Bishop,45,Male,Hyderabad,78483,77,29,20,Headphones,Fitness,12,0
+122,Andrew Travis,56,Male,Bangalore,58568,38,18,3,Smart TV,Accessories,16,0
+123,James Brown,48,Male,Hyderabad,31346,37,4,13,Camera,Electronics,20,1
+124,Andre Maldonado,54,Female,Pune,62355,58,4,15,Fitness Band,Fitness,20,0
+125,Kimberly Cannon,23,Female,Bangalore,95572,55,23,10,Tablet,Electronics,6,0
+126,Derrick Sherman,29,Female,Mumbai,116210,38,19,12,Fitness Band,Accessories,10,0
+127,Diana Willis,32,Male,Pune,46196,5,28,21,iPhone,Gaming,10,0
+128,David Daniel,44,Male,Delhi,125880,48,46,11,Fitness Band,Fashion,20,0
+129,Christopher Espinoza,44,Female,Delhi,106411,52,23,7,Camera,Accessories,1,0
+130,Lynn Phillips,29,Female,Bangalore,73165,72,27,18,Gaming Console,Gaming,12,0
+131,Mr. Anthony Martinez,23,Male,Mumbai,27812,100,27,7,Camera,Accessories,2,0
+132,Joel Ward,33,Male,Chennai,96527,93,19,28,Fitness Band,Fashion,14,0
+133,Jennifer Adams,21,Female,Chennai,136718,20,50,21,Gaming Console,Gaming,13,0
+134,Joe Tucker,49,Male,Bangalore,40918,60,60,1,Laptop,Fitness,5,0
+135,Katrina Owens,21,Female,Mumbai,133876,27,50,12,Shoes,Fitness,3,0
+136,Dennis Bishop,30,Female,Delhi,103398,78,42,14,iPhone,Fashion,14,0
+137,Michael Anthony,36,Female,Mumbai,99078,100,57,29,Watch,Gaming,15,0
+138,Tamara Wheeler,33,Male,Mumbai,77296,100,26,5,iPhone,Fashion,6,0
+139,Timothy Montoya,44,Female,Mumbai,24550,13,44,29,Watch,Fitness,4,0
+140,Shawn Davis,28,Male,Pune,34791,67,18,24,Gaming Console,Electronics,2,0
+141,Vanessa Black,52,Female,Pune,53452,60,41,9,Smart TV,Fashion,18,0
+142,Isabella Rosales,23,Female,Chennai,124715,14,32,2,Fitness Band,Electronics,14,0
+143,Ashley Richardson,23,Male,Delhi,68608,21,18,7,Shoes,Fashion,12,0
+144,William Bernard,18,Female,Hyderabad,124567,51,56,13,Shoes,Fitness,11,0
+145,Dalton Neal,41,Female,Bangalore,54774,35,23,30,Laptop,Gaming,6,0
+146,Cathy Lamb,26,Male,Delhi,35168,65,51,3,Smart TV,Fashion,4,0
+147,Katherine Dominguez,31,Male,Hyderabad,115319,5,16,4,Shoes,Electronics,14,0
+148,Richard Gutierrez,60,Female,Pune,23175,25,29,30,Camera,Accessories,5,0
+149,Joseph Baker,27,Male,Pune,146969,20,13,1,Smart TV,Electronics,11,0
+150,Melanie Hess,28,Male,Chennai,132853,39,36,3,Tablet,Gaming,16,0
+151,Aaron Stevens,27,Male,Delhi,134684,85,53,27,Watch,Gaming,20,0
+152,Philip Johnson,28,Male,Mumbai,22410,22,37,18,Smart TV,Gaming,19,0
+153,Gregory Freeman,51,Female,Hyderabad,27015,63,24,26,Camera,Fashion,14,0
+154,Eric Stafford,31,Male,Delhi,46153,51,46,2,Gaming Console,Gaming,17,0
+155,Nancy Garcia,45,Male,Mumbai,145439,43,56,22,Fitness Band,Fashion,17,0
+156,Andre Nguyen,18,Female,Hyderabad,127664,7,5,2,Headphones,Fitness,15,1
+157,Michelle Hudson,34,Female,Chennai,24861,91,12,16,iPhone,Accessories,8,0
+158,Kim Ortega,39,Male,Bangalore,104879,3,7,12,Smart TV,Gaming,16,1
+159,Chelsea Watkins,57,Male,Bangalore,133788,63,23,24,Tablet,Gaming,9,0
+160,Michael Morrison,45,Female,Pune,25271,42,7,19,Fitness Band,Fashion,7,0
+161,Fernando Smith,45,Male,Pune,131713,64,14,16,Laptop,Accessories,6,0
+162,Andrew English,55,Female,Bangalore,97614,56,26,20,Tablet,Fitness,17,0
+163,David Williams,43,Female,Chennai,44908,88,46,2,iPhone,Gaming,20,0
+164,Levi Gardner,39,Male,Hyderabad,128739,43,48,13,Fitness Band,Gaming,12,0
+165,Amy Martin,38,Male,Delhi,42868,38,22,25,Laptop,Fitness,2,0
+166,Tyler Miller,43,Male,Mumbai,56837,91,52,5,Fitness Band,Fitness,10,0
+167,Ariel Williams,48,Female,Chennai,98575,53,56,28,Laptop,Gaming,20,0
+168,Kevin Parker,28,Female,Chennai,100560,78,25,24,Tablet,Accessories,15,0
+169,Mason Bishop,54,Female,Pune,34125,64,15,8,Smart TV,Fashion,16,0
+170,Phillip Rodriguez,51,Male,Mumbai,104732,49,7,16,Laptop,Accessories,19,0
+171,Amanda Cunningham,37,Female,Bangalore,126631,12,60,24,Laptop,Accessories,1,0
+172,Jessica Young,53,Male,Delhi,149053,84,9,3,iPhone,Electronics,6,0
+173,Marcus Garcia,58,Female,Delhi,68194,46,27,11,Tablet,Fitness,11,0
+174,Nicole Sanchez,35,Female,Mumbai,21359,58,12,26,iPhone,Gaming,4,0
+175,Alicia Patterson,28,Male,Chennai,64850,35,52,13,Headphones,Fitness,16,0
+176,Joseph Butler,35,Female,Pune,41528,59,7,14,Laptop,Fitness,11,0
+177,Sheila Taylor,44,Male,Hyderabad,139027,13,33,14,Shoes,Fitness,10,0
+178,Billy Sherman,34,Female,Mumbai,37654,27,14,30,Camera,Electronics,12,0
+179,Caitlin Perez,44,Male,Hyderabad,36426,62,39,20,Camera,Electronics,20,0
+180,Victor Collins,26,Male,Chennai,20553,95,24,27,Shoes,Fashion,7,0
+181,Nicholas Taylor,18,Male,Pune,104183,15,49,9,Gaming Console,Gaming,4,0
+182,Christopher Powers,55,Female,Pune,46705,55,1,4,Watch,Electronics,3,0
+183,Alyssa Pace,31,Male,Delhi,79813,70,34,1,Shoes,Fashion,15,0
+184,Micheal Orozco,29,Male,Pune,79170,31,22,11,Watch,Fitness,9,0
+185,Chase Compton,49,Male,Pune,20319,85,50,17,Tablet,Gaming,18,0
+186,Susan Spencer,59,Male,Mumbai,71244,97,22,24,Watch,Fashion,3,0
+187,Danielle Mccarty,47,Female,Delhi,98476,15,39,16,Camera,Fashion,6,0
+188,Donna Hoover,42,Female,Pune,99961,15,1,12,Fitness Band,Fitness,15,1
+189,Karen Gaines,37,Female,Chennai,97248,5,23,10,iPhone,Electronics,19,0
+190,Shannon Pacheco,46,Female,Delhi,138041,57,28,15,Laptop,Electronics,12,0
+191,Anthony Dyer,52,Female,Pune,27510,70,47,15,Laptop,Accessories,19,0
+192,Andrew Edwards,19,Male,Delhi,72074,56,57,15,Watch,Fitness,15,0
+193,Riley Thompson,21,Male,Chennai,113194,81,45,10,Smart TV,Fitness,10,0
+194,Rachel Cohen,22,Female,Hyderabad,25403,17,4,20,Tablet,Electronics,13,1
+195,Mary Young,46,Female,Chennai,117850,54,12,24,Gaming Console,Gaming,4,0
+196,Karen Lee,30,Female,Hyderabad,35493,52,2,23,Gaming Console,Accessories,4,0
+197,Betty Houston,44,Female,Pune,48037,49,15,19,Camera,Fashion,3,0
+198,Morgan Swanson,21,Male,Delhi,143661,51,60,2,Laptop,Gaming,9,0
+199,Lauren Davis,45,Female,Bangalore,32965,34,8,5,Laptop,Electronics,4,1
+200,Andrew Porter,53,Female,Mumbai,69150,57,45,11,Smart TV,Gaming,12,0
+201,Gary Lawrence,59,Male,Bangalore,29685,22,13,13,iPhone,Fashion,16,0
+202,Richard Hanson,59,Female,Bangalore,64509,77,27,11,iPhone,Fashion,15,0
+203,Pamela Jones,54,Male,Delhi,74124,13,38,15,Tablet,Gaming,1,0
+204,Rachel Hernandez,53,Male,Bangalore,149782,29,34,14,Laptop,Fashion,15,0
+205,Lisa Phillips,39,Male,Bangalore,138651,27,1,30,Fitness Band,Fashion,3,1
+206,Matthew Hendrix,45,Male,Pune,65731,88,1,14,Watch,Fitness,10,0
+207,Nicholas Logan,50,Male,Pune,142329,75,44,30,iPhone,Fitness,2,0
+208,Erica Walker,60,Female,Pune,47606,90,33,22,Camera,Fitness,20,0
+209,Natalie Horn,35,Male,Delhi,71904,2,52,23,iPhone,Accessories,14,0
+210,Miss Erica Jones,55,Male,Chennai,35838,98,58,7,Watch,Fashion,19,0
+211,Christy West,53,Female,Mumbai,149246,25,35,27,Camera,Gaming,19,0
+212,Jason Jacobs,45,Male,Bangalore,95090,18,2,17,Gaming Console,Fashion,4,1
+213,Jennifer Merritt,38,Male,Mumbai,29960,55,45,3,Shoes,Gaming,4,0
+214,Adam Hunter,42,Female,Delhi,41977,15,44,4,Headphones,Fitness,4,0
+215,Jennifer Herrera,25,Female,Mumbai,46977,56,7,11,Gaming Console,Fashion,17,0
+216,Leslie Mckay,38,Female,Delhi,81949,6,51,16,Smart TV,Fitness,9,0
+217,Angela Weiss,56,Male,Hyderabad,62096,24,40,7,Smart TV,Gaming,16,0
+218,Shannon Davila,41,Female,Delhi,38662,2,9,20,Laptop,Fashion,18,1
+219,Karen Henry,39,Male,Bangalore,125570,86,58,26,Shoes,Fitness,4,0
+220,Rachel Rivera,21,Female,Bangalore,40767,97,18,16,Gaming Console,Fitness,14,0
+221,Teresa Ashley,48,Male,Chennai,141068,82,54,21,Headphones,Accessories,9,0
+222,Jessica Watson,60,Female,Chennai,130381,38,2,30,Tablet,Fashion,14,1
+223,Eric Palmer II,26,Female,Chennai,35862,98,20,16,Gaming Console,Fashion,15,0
+224,Dennis Levine,28,Male,Hyderabad,28248,89,4,25,Watch,Accessories,1,0
+225,Paul Williams,35,Male,Hyderabad,42745,26,35,21,Smart TV,Fitness,19,0
+226,Nicole Wright,47,Male,Chennai,46774,6,58,26,Laptop,Electronics,2,0
+227,Lawrence Cameron,38,Male,Bangalore,45078,89,46,19,Headphones,Fitness,10,0
+228,Linda Roberts,47,Male,Bangalore,34337,85,37,28,iPhone,Accessories,3,0
+229,Robert Anderson,59,Female,Delhi,47086,65,32,7,Fitness Band,Electronics,20,0
+230,Rebecca Carpenter,39,Female,Mumbai,149299,64,20,18,Laptop,Fitness,15,0
+231,Mr. Stephen Owens,35,Male,Bangalore,26342,16,55,17,Smart TV,Gaming,8,0
+232,Jaclyn Hobbs,46,Female,Bangalore,135155,70,29,23,Watch,Fitness,19,0
+233,Randall Hawkins,40,Male,Delhi,132238,91,7,22,Fitness Band,Gaming,14,0
+234,Mr. Kenneth Wallace PhD,40,Male,Hyderabad,131243,93,40,21,Laptop,Accessories,16,0
+235,Tracey Brooks,52,Male,Delhi,136797,10,49,27,iPhone,Fitness,4,0
+236,Anthony Lynn,57,Male,Hyderabad,122067,45,53,26,Camera,Electronics,2,0
+237,David Stone,23,Male,Bangalore,122255,1,24,1,Camera,Fitness,10,0
+238,Eileen Singh,18,Male,Hyderabad,32364,39,3,13,Smart TV,Fitness,17,1
+239,Michael Sanders,41,Female,Hyderabad,141450,60,51,16,Fitness Band,Accessories,5,0
+240,Brandy Compton,54,Female,Bangalore,50819,1,5,2,Tablet,Fashion,10,1
+241,Angela Miller,37,Male,Mumbai,86167,86,37,7,Fitness Band,Accessories,17,0
+242,Isaac Wright II,33,Male,Delhi,29258,16,27,15,Shoes,Fashion,8,0
+243,Kristina Ramirez,55,Male,Chennai,93376,91,13,6,iPhone,Fitness,7,0
+244,Angela Diaz,55,Female,Hyderabad,118277,21,14,2,Headphones,Fashion,1,0
+245,Bruce Ramirez,33,Male,Delhi,57702,8,7,13,Fitness Band,Accessories,19,1
+246,Scott Young,23,Female,Hyderabad,57394,48,21,20,Gaming Console,Fashion,5,0
+247,Jill Gonzalez,22,Female,Mumbai,30267,99,35,7,Smart TV,Accessories,9,0
+248,William Schwartz,34,Male,Delhi,58432,66,57,3,Gaming Console,Accessories,17,0
+249,Mark Adams,48,Male,Chennai,95658,77,26,15,Shoes,Fitness,13,0
+250,Oscar Martinez,39,Female,Bangalore,80742,4,4,20,Tablet,Gaming,19,1
+251,Sara Mcdowell,23,Male,Hyderabad,104006,19,38,13,Smart TV,Fitness,8,0
+252,Richard Cole,48,Female,Pune,135231,40,30,28,Laptop,Fashion,9,0
+253,Nicole Burns,34,Male,Mumbai,132867,42,13,6,Laptop,Accessories,2,0
+254,Brittany Parker,31,Female,Hyderabad,40265,69,2,27,Watch,Fitness,20,0
+255,Sandra Kline,52,Female,Pune,36498,43,3,26,Tablet,Gaming,10,0
+256,Michael Sharp,48,Female,Chennai,108570,94,7,14,Laptop,Electronics,13,0
+257,Curtis Curry,33,Male,Hyderabad,81058,91,48,19,Gaming Console,Fitness,19,0
+258,Diana Gates,30,Female,Delhi,49438,78,41,5,Camera,Fashion,4,0
+259,Richard Wright,23,Female,Bangalore,51952,98,16,10,Tablet,Electronics,7,0
+260,Jessica Hughes,44,Female,Hyderabad,103985,62,48,9,Shoes,Gaming,20,0
+261,Joseph Powell,26,Female,Chennai,87934,24,31,19,Laptop,Gaming,5,0
+262,Kaitlin Carter,39,Male,Delhi,85084,74,59,7,Shoes,Fitness,5,0
+263,Ashley Smith,33,Female,Bangalore,34758,87,57,7,Gaming Console,Electronics,1,0
+264,Jessica Meyers,27,Male,Bangalore,80990,99,17,21,Fitness Band,Electronics,19,0
+265,Leslie Shah,20,Female,Hyderabad,58110,71,6,12,Gaming Console,Fitness,19,0
+266,Stanley Smith,35,Female,Delhi,118973,81,42,7,Headphones,Fashion,4,0
+267,Teresa Aguilar,44,Male,Delhi,84465,68,12,20,iPhone,Accessories,15,0
+268,Deborah Roth,54,Male,Mumbai,34973,59,12,14,Headphones,Fitness,16,0
+269,Crystal Shelton,60,Female,Mumbai,99595,52,14,20,Headphones,Fitness,15,0
+270,Barbara Golden,38,Female,Mumbai,96546,93,3,20,Shoes,Gaming,18,0
+271,Christine Benjamin,34,Female,Pune,26335,84,50,12,Gaming Console,Gaming,16,0
+272,Julie Shea,29,Female,Pune,83735,93,47,24,Watch,Gaming,17,0
+273,Mark Campbell,37,Female,Chennai,111009,61,7,29,Shoes,Accessories,1,0
+274,Mark Lane,35,Male,Mumbai,142384,71,59,20,Smart TV,Accessories,18,0
+275,Jeremy Miller,51,Female,Delhi,116297,18,52,17,Camera,Fashion,9,0
+276,Tyler Byrd,51,Female,Bangalore,73889,40,22,23,Laptop,Electronics,16,0
+277,Mr. Patrick Lee II,33,Female,Pune,110605,97,41,22,Headphones,Electronics,10,0
+278,Shannon Alvarado,45,Male,Mumbai,41533,52,21,4,Fitness Band,Fashion,14,0
+279,Timothy Golden,45,Female,Delhi,130995,89,57,19,Fitness Band,Electronics,19,0
+280,Robert Huffman,21,Male,Bangalore,99034,34,48,13,Camera,Accessories,12,0
+281,Barbara Garza,38,Male,Mumbai,77878,94,17,23,Shoes,Fitness,3,0
+282,Donald Hodges,45,Male,Hyderabad,34237,84,50,27,Fitness Band,Gaming,16,0
+283,Kristen Mack,28,Male,Pune,39012,4,47,25,Watch,Electronics,1,0
+284,Catherine Soto,52,Female,Pune,44721,53,14,5,Watch,Fitness,3,0
+285,Kenneth Williams,22,Male,Pune,72644,71,32,13,Smart TV,Gaming,8,0
+286,James Hess,35,Male,Pune,83789,20,23,21,Fitness Band,Electronics,14,0
+287,Tracey Bean,51,Female,Chennai,130265,72,11,3,Shoes,Fashion,3,0
+288,Caitlyn Donaldson,60,Male,Pune,107082,3,21,1,Smart TV,Electronics,8,0
+289,Mr. Kyle Smith,37,Male,Bangalore,148439,75,27,18,Smart TV,Fitness,4,0
+290,Jason Smith,26,Male,Hyderabad,107884,7,27,10,Gaming Console,Electronics,19,0
+291,Jonathan Ramos,57,Female,Chennai,114466,16,54,18,Fitness Band,Electronics,10,0
+292,Christina Mendez,55,Female,Chennai,94162,64,26,8,Camera,Accessories,15,0
+293,Laura Garcia,40,Female,Hyderabad,34812,61,2,28,Tablet,Gaming,11,0
+294,Brenda Torres,44,Female,Mumbai,46443,6,2,29,Laptop,Accessories,13,1
+295,Christopher Norman,30,Female,Delhi,83998,98,12,4,Laptop,Fashion,10,0
+296,Amy Fernandez,54,Male,Mumbai,94068,14,52,14,Tablet,Accessories,14,0
+297,Nicolas Vega,34,Female,Delhi,34011,82,44,25,Laptop,Fashion,13,0
+298,Mr. Steven Hampton,22,Male,Pune,72252,94,28,6,Smart TV,Fashion,9,0
+299,Clayton Horne,51,Male,Chennai,90088,36,57,15,Headphones,Electronics,2,0
+300,Rhonda Gallegos,37,Female,Delhi,44120,97,47,29,Shoes,Fitness,6,0
+301,Heather Rivera,36,Male,Pune,67641,66,32,30,Gaming Console,Electronics,18,0
+302,John Taylor,20,Male,Bangalore,21688,94,42,10,Smart TV,Electronics,20,0
+303,Amy Martinez MD,50,Male,Delhi,82726,8,10,13,Watch,Electronics,17,1
+304,Todd Chapman,40,Female,Delhi,139046,85,52,5,iPhone,Accessories,16,0
+305,Gerald Howell,60,Male,Delhi,98831,68,46,29,Fitness Band,Fitness,1,0
+306,Yvonne Rodriguez,48,Female,Delhi,55799,35,53,29,Watch,Gaming,17,0
+307,Wesley English,29,Female,Hyderabad,144073,13,57,1,Tablet,Fashion,20,0
+308,Ryan Robertson,20,Male,Mumbai,54623,65,42,9,Laptop,Accessories,3,0
+309,Luke Smith,27,Male,Pune,33969,67,58,14,Tablet,Gaming,7,0
+310,Natalie Schmidt,52,Male,Mumbai,38640,14,22,9,Laptop,Accessories,1,0
+311,Nicholas Barnes,47,Male,Mumbai,130481,41,36,19,Watch,Fitness,8,0
+312,Larry Tanner,46,Male,Bangalore,109574,84,55,29,Headphones,Fashion,16,0
+313,Jon Fritz,42,Male,Chennai,101757,93,27,15,Camera,Gaming,5,0
+314,Alicia Brennan,47,Female,Hyderabad,21128,10,37,20,Camera,Gaming,2,0
+315,Taylor Reynolds,18,Female,Pune,91312,85,34,14,Smart TV,Gaming,14,0
+316,Jennifer Baker,50,Female,Pune,138763,60,36,29,iPhone,Gaming,7,0
+317,Gabriela Norton,37,Female,Pune,92715,14,44,22,Fitness Band,Accessories,6,0
+318,Connie Williams,44,Female,Chennai,20834,84,42,20,iPhone,Fashion,8,0
+319,Michael Howe,47,Male,Hyderabad,128884,77,28,13,Camera,Fitness,14,0
+320,Nicole Hall,55,Male,Delhi,143858,34,22,24,iPhone,Fashion,18,0
+321,Kevin Cook,33,Male,Chennai,22161,55,38,18,Watch,Fitness,7,0
+322,Dana Weiss,26,Male,Chennai,121091,45,51,24,Tablet,Accessories,5,0
+323,Jean Cruz,34,Male,Bangalore,54281,2,11,14,iPhone,Gaming,2,1
+324,Vicki Sandoval DDS,37,Male,Bangalore,106541,52,40,25,Fitness Band,Accessories,13,0
+325,Morgan Parrish,46,Female,Pune,37977,38,10,8,Headphones,Fashion,3,1
+326,Denise Garcia,42,Female,Hyderabad,99652,47,48,27,Camera,Fitness,13,0
+327,Jill Sanders,47,Male,Pune,81308,63,33,15,Shoes,Electronics,16,0
+328,Tracy Miller,20,Female,Chennai,53493,75,40,1,Watch,Accessories,13,0
+329,Curtis Harris,41,Female,Hyderabad,30253,29,19,25,Laptop,Fitness,6,0
+330,Christopher Berry,23,Female,Chennai,145908,60,32,4,Gaming Console,Fitness,6,0
+331,Meghan Pope,40,Female,Hyderabad,68020,40,22,24,iPhone,Electronics,3,0
+332,Kelly Giles,43,Male,Hyderabad,49759,51,49,25,Gaming Console,Fitness,10,0
+333,Dwayne Alvarado,51,Male,Chennai,109491,62,59,26,Shoes,Electronics,20,0
+334,Joseph Perry,43,Female,Hyderabad,28303,22,30,19,Shoes,Electronics,17,0
+335,Eduardo Johns,18,Female,Hyderabad,30877,45,28,29,Gaming Console,Accessories,18,0
+336,Chelsea Williamson,47,Female,Mumbai,118794,74,1,8,Smart TV,Electronics,3,0
+337,Riley Meyer PhD,27,Female,Hyderabad,127457,53,3,10,Camera,Accessories,3,0
+338,Raymond Combs,26,Female,Hyderabad,134018,71,40,23,Gaming Console,Fashion,12,0
+339,James Sanchez,23,Male,Mumbai,110914,25,53,3,Watch,Fashion,7,0
+340,Veronica Smith,50,Female,Bangalore,127394,87,20,25,iPhone,Gaming,13,0
+341,Heidi Reynolds,47,Female,Pune,110714,11,60,30,Fitness Band,Accessories,6,0
+342,Kyle Donaldson,31,Female,Mumbai,127715,31,33,2,Smart TV,Fashion,6,0
+343,Jamie Hernandez,58,Female,Hyderabad,124440,37,43,6,Smart TV,Accessories,3,0
+344,Bryan Rios,54,Female,Delhi,56188,1,40,26,Camera,Fashion,9,0
+345,Travis Best,24,Male,Bangalore,51148,21,42,13,Camera,Fitness,2,0
+346,Daniel Green,50,Female,Pune,141161,17,35,21,Tablet,Accessories,9,0
+347,Jamie White,42,Male,Mumbai,57662,51,40,28,Camera,Gaming,20,0
+348,Ruben Cantrell,24,Male,Chennai,30610,100,53,23,Shoes,Gaming,3,0
+349,Jonathon Gutierrez,56,Female,Pune,57401,41,55,1,Watch,Electronics,5,0
+350,Steven Wu,57,Female,Mumbai,87988,89,30,13,Laptop,Electronics,1,0
+351,Darius Sanchez,47,Female,Hyderabad,118877,33,19,9,Headphones,Fitness,8,0
+352,Victor Green,37,Male,Delhi,54795,55,23,7,Headphones,Accessories,3,0
+353,Rebecca Hansen,54,Male,Bangalore,59761,58,50,15,Camera,Electronics,12,0
+354,Sherri Sims,25,Male,Hyderabad,32501,46,54,17,Watch,Fitness,10,0
+355,Ryan Long,31,Male,Pune,69933,24,1,7,iPhone,Fashion,11,1
+356,Paul Thompson,51,Male,Delhi,134544,47,7,2,Tablet,Fitness,1,0
+357,John Sanders,19,Female,Chennai,72633,75,27,28,Smart TV,Electronics,8,0
+358,Rebecca Jackson,25,Female,Mumbai,33462,26,42,5,Camera,Electronics,3,0
+359,Michelle Vargas,20,Male,Hyderabad,118109,2,57,24,Headphones,Electronics,18,0
+360,Julie Rogers,50,Male,Pune,46225,48,31,4,Watch,Fitness,13,0
+361,Robert Hayes,21,Male,Hyderabad,135377,56,59,21,Fitness Band,Electronics,8,0
+362,Sydney Jimenez,33,Female,Hyderabad,68618,83,16,30,Headphones,Fashion,11,0
+363,Michele Barnes,59,Male,Delhi,79915,86,57,29,Tablet,Accessories,16,0
+364,Cody Thompson,23,Male,Delhi,97330,9,20,17,Fitness Band,Fitness,10,0
+365,Leon Jacobs,46,Male,Pune,98233,54,28,27,Headphones,Gaming,10,0
+366,Mary Oneill,23,Female,Hyderabad,148899,94,8,16,Shoes,Accessories,14,0
+367,Rachel Evans,51,Female,Bangalore,89488,73,41,3,Tablet,Gaming,6,0
+368,Amber Gonzalez,39,Female,Chennai,35492,94,29,26,Fitness Band,Electronics,13,0
+369,Gina Francis,58,Female,Hyderabad,83468,24,36,2,Fitness Band,Gaming,11,0
+370,Thomas Davis,53,Male,Hyderabad,28455,28,36,1,Watch,Electronics,19,0
+371,Logan Holmes,56,Female,Hyderabad,139412,19,39,28,Tablet,Accessories,14,0
+372,Phyllis Carter,23,Female,Delhi,114919,73,42,12,Shoes,Fitness,5,0
+373,Samuel Stewart,54,Male,Delhi,118813,83,12,26,Tablet,Fitness,7,0
+374,Charles Curry,38,Female,Hyderabad,68194,16,16,16,Gaming Console,Gaming,17,0
+375,Jessica Dixon,19,Male,Delhi,107979,50,42,29,iPhone,Electronics,14,0
+376,Nicholas Jackson,42,Male,Delhi,68853,98,44,11,iPhone,Accessories,12,0
+377,John Jackson,31,Female,Chennai,53565,31,7,4,Fitness Band,Gaming,1,1
+378,Michael White,39,Male,Mumbai,77844,21,58,23,Headphones,Accessories,13,0
+379,Rhonda Mendoza,54,Male,Mumbai,22266,88,54,19,Watch,Gaming,16,0
+380,Christopher Lindsey,49,Male,Mumbai,89607,37,14,18,Headphones,Fitness,16,0
+381,Cynthia Martinez,28,Female,Pune,67273,64,35,1,Headphones,Fitness,15,0
+382,Brian Welch,27,Female,Pune,77825,80,39,17,Camera,Gaming,6,0
+383,Robert Rivera,40,Male,Pune,104167,87,11,25,Tablet,Gaming,13,0
+384,Natalie Wilson,29,Female,Hyderabad,85171,61,42,2,Gaming Console,Fitness,12,0
+385,Juan Hartman,50,Female,Pune,28613,46,23,4,Gaming Console,Fashion,7,0
+386,Christopher Mcneil,47,Male,Mumbai,43187,85,2,3,iPhone,Gaming,1,0
+387,Michael Howard,55,Female,Pune,103321,43,58,1,Tablet,Accessories,11,0
+388,Mitchell Odom,59,Female,Delhi,58298,94,47,27,Shoes,Accessories,18,0
+389,James Flores,37,Female,Bangalore,139813,21,60,11,Fitness Band,Fitness,17,0
+390,Mandy Smith,44,Female,Chennai,22537,27,58,5,Laptop,Gaming,15,0
+391,Amy Cruz,38,Male,Bangalore,72829,1,6,13,Headphones,Gaming,12,1
+392,Kathryn Haynes,53,Female,Chennai,130594,70,35,27,Laptop,Fitness,2,0
+393,Timothy Weaver,54,Female,Mumbai,109321,82,36,12,Shoes,Fitness,15,0
+394,Sarah Hernandez,28,Female,Delhi,45260,12,8,28,Watch,Electronics,13,1
+395,Wendy Price,30,Female,Hyderabad,84682,82,50,14,iPhone,Gaming,20,0
+396,Roger Patterson,30,Female,Mumbai,144574,59,42,21,Laptop,Accessories,14,0
+397,Ashley Cortez,25,Female,Bangalore,38627,4,19,28,Laptop,Fitness,12,0
+398,Jeremy Keller,24,Male,Hyderabad,114861,90,31,27,Camera,Fashion,11,0
+399,Kristie Moss,53,Male,Pune,31057,8,4,15,Smart TV,Fashion,15,1
+400,Jeremy Fuller,33,Female,Bangalore,142224,41,28,3,Headphones,Electronics,14,0
+401,Kimberly Miller,55,Female,Delhi,72214,100,7,9,Gaming Console,Electronics,9,0
+402,Andrea Jackson,25,Female,Hyderabad,94381,34,41,21,Headphones,Gaming,18,0
+403,Laura Brady,52,Male,Chennai,104114,72,43,3,Laptop,Accessories,8,0
+404,Bridget Marks,29,Female,Bangalore,139243,22,44,20,Gaming Console,Accessories,4,0
+405,Philip Fields,39,Male,Chennai,127729,94,37,16,Laptop,Accessories,11,0
+406,Richard Mcgee,52,Female,Chennai,68769,70,41,30,Headphones,Fashion,18,0
+407,Vincent Neal,20,Female,Chennai,71753,68,30,5,Watch,Gaming,6,0
+408,Timothy Beard,44,Female,Chennai,51968,51,60,9,iPhone,Electronics,16,0
+409,Steve Welch,33,Female,Pune,51147,97,56,14,Tablet,Fitness,15,0
+410,Ashley Wright,39,Male,Pune,127903,62,25,17,iPhone,Fashion,20,0
+411,Kenneth Salazar,20,Female,Delhi,119863,28,49,25,Shoes,Gaming,4,0
+412,Melissa Lee,53,Male,Pune,27808,11,43,4,Gaming Console,Fashion,11,0
+413,Kelly Baker,56,Female,Bangalore,134610,13,19,27,Camera,Fitness,2,0
+414,Matthew Arnold,57,Male,Delhi,58867,89,13,3,Watch,Fitness,20,0
+415,William Bush,33,Female,Bangalore,60921,93,25,10,iPhone,Electronics,16,0
+416,Richard Gonzales,24,Male,Mumbai,145491,12,28,20,Fitness Band,Fashion,12,0
+417,Deanna Walker,44,Male,Pune,94022,63,51,16,Tablet,Accessories,12,0
+418,Robin Edwards,18,Male,Mumbai,66671,100,22,27,Gaming Console,Fitness,6,0
+419,Briana Gomez,27,Female,Bangalore,121719,76,23,22,Fitness Band,Fashion,11,0
+420,Matthew Benjamin,52,Male,Mumbai,57003,84,12,4,Tablet,Electronics,20,0
+421,Jason Sanders,29,Female,Mumbai,86756,38,44,5,iPhone,Gaming,5,0
+422,Lance Flynn PhD,54,Male,Delhi,39554,91,48,13,Watch,Electronics,1,0
+423,Dominique Stewart,22,Female,Hyderabad,85807,83,32,26,Tablet,Fitness,16,0
+424,Jessica Lopez,35,Male,Bangalore,130010,83,35,3,Camera,Gaming,19,0
+425,Caroline Guerrero,21,Female,Hyderabad,86840,65,29,27,Gaming Console,Accessories,8,0
+426,Brian Mcguire,32,Female,Mumbai,136930,86,47,1,Gaming Console,Gaming,1,0
+427,Christina Abbott,26,Male,Mumbai,59740,25,28,24,Laptop,Gaming,18,0
+428,Rhonda Jefferson,37,Female,Hyderabad,135401,99,33,13,Camera,Gaming,16,0
+429,Amanda Smith,58,Female,Bangalore,113667,8,48,9,Laptop,Fashion,6,0
+430,George Snow,59,Female,Mumbai,136401,60,58,15,Smart TV,Electronics,9,0
+431,Heather Ashley,46,Male,Hyderabad,103331,37,34,29,iPhone,Accessories,12,0
+432,Kathryn Jones,45,Male,Pune,117869,4,46,25,Tablet,Fashion,17,0
+433,Sean Ali,33,Male,Delhi,104873,53,37,23,Headphones,Gaming,20,0
+434,James Frank,28,Male,Pune,47218,60,31,17,iPhone,Fitness,11,0
+435,Ronald Osborne,33,Female,Bangalore,76053,95,7,28,Watch,Accessories,6,0
+436,Benjamin Price,18,Female,Mumbai,57669,55,56,13,iPhone,Fitness,5,0
+437,Kimberly Riggs,18,Male,Mumbai,127720,17,8,16,Tablet,Fitness,17,1
+438,Susan Craig,42,Female,Bangalore,117305,33,27,17,iPhone,Fashion,1,0
+439,Alison Walker,44,Female,Delhi,21610,15,46,20,Gaming Console,Gaming,13,0
+440,Theresa Cook,31,Male,Mumbai,100829,54,57,5,iPhone,Gaming,2,0
+441,Ralph Mills,43,Male,Pune,62897,72,55,10,Gaming Console,Fashion,8,0
+442,Lisa Lewis,41,Male,Chennai,60036,84,4,11,Watch,Fitness,15,0
+443,Alvin Kelly,25,Female,Delhi,96518,86,33,14,Fitness Band,Gaming,12,0
+444,Derrick Osborn,54,Male,Delhi,26083,62,40,11,Watch,Gaming,12,0
+445,Laura Murray,21,Female,Mumbai,53423,48,51,22,Tablet,Fashion,7,0
+446,Elizabeth Richards,51,Male,Bangalore,47695,5,44,11,Camera,Electronics,12,0
+447,Matthew Hall,56,Female,Chennai,78016,23,24,15,Fitness Band,Gaming,10,0
+448,Diane Kim,32,Male,Bangalore,32217,43,32,25,Tablet,Fitness,6,0
+449,Nathan Yoder,29,Female,Chennai,61777,95,1,22,iPhone,Fitness,14,0
+450,Dennis Phillips,58,Male,Mumbai,79395,7,29,20,Watch,Accessories,6,0
+451,Michelle Salinas,60,Male,Bangalore,113962,66,11,15,Headphones,Fitness,2,0
+452,April Woods,33,Male,Delhi,110515,92,7,10,Smart TV,Gaming,7,0
+453,Brandon Smith,38,Male,Chennai,115316,60,42,9,Gaming Console,Gaming,4,0
+454,Stephanie Smith,57,Female,Hyderabad,20765,66,17,8,iPhone,Gaming,8,0
+455,Joanna Rivera,21,Female,Chennai,44302,94,30,30,Camera,Gaming,16,0
+456,Heather Lewis,53,Female,Chennai,31377,46,17,13,Laptop,Fitness,12,0
+457,Paul Johnson,55,Female,Pune,35800,25,41,29,Watch,Fitness,16,0
+458,Mason Johnson,38,Male,Pune,88200,89,13,25,Gaming Console,Fashion,20,0
+459,Leslie Lloyd,51,Male,Delhi,30436,8,10,27,Gaming Console,Fitness,6,1
+460,Lauren Garcia,38,Male,Chennai,141957,24,13,14,Shoes,Fashion,4,0
+461,Alan Ramos,49,Male,Chennai,94207,27,54,26,Tablet,Electronics,17,0
+462,Jose Knight,46,Male,Mumbai,26745,12,18,28,iPhone,Accessories,12,0
+463,Bradley Myers,55,Female,Chennai,24859,39,9,19,iPhone,Fashion,20,1
+464,Elaine Barker,22,Male,Hyderabad,90660,93,34,28,Camera,Gaming,17,0
+465,Samuel Martin,54,Male,Mumbai,96960,48,46,3,Smart TV,Electronics,14,0
+466,Maria Hampton,57,Male,Mumbai,126813,31,18,24,Fitness Band,Fashion,13,0
+467,Anne Lawrence,53,Male,Pune,41898,38,46,29,Smart TV,Fashion,7,0
+468,Gavin Wright,45,Female,Bangalore,104899,61,43,17,Gaming Console,Accessories,8,0
+469,William Wilson,39,Male,Mumbai,61572,14,39,14,iPhone,Fashion,7,0
+470,Cody Shaffer,42,Male,Bangalore,102052,16,53,19,Watch,Gaming,10,0
+471,Cindy Richardson,55,Male,Delhi,70810,14,13,15,Watch,Gaming,15,0
+472,Jamie Webb,24,Female,Pune,108635,11,44,1,Watch,Accessories,12,0
+473,Megan Pham,25,Female,Delhi,55617,57,55,15,Camera,Fitness,19,0
+474,Tim Bauer,45,Female,Mumbai,83060,2,1,11,Fitness Band,Fashion,16,1
+475,Gerald Meyer,18,Female,Mumbai,21551,69,25,1,iPhone,Fitness,5,0
+476,Robert Taylor,34,Female,Mumbai,119057,36,1,23,Laptop,Fitness,17,1
+477,Donald Torres,24,Female,Pune,24961,1,28,15,Shoes,Gaming,12,0
+478,Krista Huffman,39,Male,Mumbai,26186,51,3,5,Gaming Console,Accessories,15,0
+479,William Richards,53,Male,Hyderabad,80233,10,32,3,Laptop,Gaming,5,0
+480,Monica Cruz,24,Male,Delhi,93287,79,25,15,Fitness Band,Accessories,16,0
+481,Samuel Thompson,32,Female,Delhi,61636,21,13,1,Smart TV,Fashion,19,0
+482,Nancy Davenport,60,Male,Bangalore,72173,43,1,27,Tablet,Electronics,20,0
+483,Eric Baker,51,Male,Mumbai,120975,60,7,13,Camera,Fitness,18,0
+484,Teresa Boyd,57,Female,Bangalore,67826,57,30,17,Laptop,Accessories,18,0
+485,Anna Ramirez,48,Female,Bangalore,40691,76,7,27,Laptop,Fashion,7,0
+486,Jessica Soto,42,Female,Delhi,60883,95,34,25,Headphones,Fitness,12,0
+487,Max Bullock,27,Male,Mumbai,100005,68,56,18,Laptop,Gaming,18,0
+488,Connie Smith,36,Female,Bangalore,137306,69,56,3,Fitness Band,Gaming,19,0
+489,Kimberly Williamson,30,Male,Delhi,126900,40,14,12,Shoes,Fitness,3,0
+490,Adrian Smith,24,Male,Delhi,66451,13,16,9,Fitness Band,Gaming,3,0
+491,Latasha Wood,54,Male,Chennai,130590,61,28,2,Watch,Accessories,17,0
+492,Mr. Austin Maldonado,34,Male,Chennai,27215,48,50,10,Gaming Console,Gaming,6,0
+493,Stephanie Duncan,49,Female,Mumbai,92416,94,40,27,Shoes,Accessories,15,0
+494,Laura Rivera,45,Male,Bangalore,48594,58,8,17,Headphones,Electronics,10,0
+495,Yolanda Boyd,53,Female,Chennai,46503,24,8,1,Headphones,Gaming,9,1
+496,Kim Lucas,41,Male,Bangalore,83600,52,17,22,Shoes,Fashion,2,0
+497,John Johnson,36,Female,Delhi,84255,31,53,1,Fitness Band,Electronics,10,0
+498,Christopher Turner,48,Male,Chennai,43387,52,55,11,Laptop,Electronics,19,0
+499,Daniel Mayo,40,Male,Hyderabad,104309,99,24,17,Laptop,Gaming,2,0
+500,Lisa Johnson,60,Female,Mumbai,149645,32,58,10,Shoes,Electronics,7,0
