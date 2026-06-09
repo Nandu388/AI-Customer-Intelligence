@@ -1,5 +1,5 @@
-
 # 🤖 AI-Driven Customer Intelligence Platform
+# Demo link : https://ai-customer-intelligence-hmvg.onrender.com
 
 An AI-powered customer analytics platform built using Streamlit, Machine Learning, and Data Visualization.
 
